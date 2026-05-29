@@ -17,7 +17,7 @@ is the convention all three converged on (the old per-tool dirs — `~/.codex/sk
 
 `backend-developer`, `brainstorming`, `code-simplifier`, `design-principles`,
 `frontend-design`, `product-builder`, `prompt-engineering`, `skill-creator`,
-`software-architecture`, `subagent-driven-development`, `ui-designer`, `vc-market-sizing`.
+`software-architecture`, `subagent-driven-development`, `ui-designer`.
 
 Edit the `SKILL.md` here → all three tools pick it up. Keep wording **tool-neutral**
 (say "you", not "Claude"; don't reference tool-specific features like TodoWrite) so a

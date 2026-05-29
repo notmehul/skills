@@ -1,0 +1,9 @@
+# Third-party skills are CLI/app-managed and reproducible — not tracked here.
+# Reinstall them with the commands in README.md (see "Third-party skills").
+skills/ui-ux-pro-max/
+skills/find-skills/
+skills/remotion-best-practices/
+# cua-driver is a symlink into /Applications/CuaDriver.app (machine-specific)
+skills/cua-driver
+
+.DS_Store

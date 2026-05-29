@@ -23,6 +23,17 @@ Edit the `SKILL.md` here → all three tools pick it up. Keep wording **tool-neu
 (say "you", not "Claude"; don't reference tool-specific features like TodoWrite) so a
 skill stays portable across agents.
 
+## Vendored skills (tracked here; hand-imported from external sources)
+
+Imported manually (not via the `skills` CLI, so not in `.skill-lock.json`) and kept
+under version control as part of the curated set. Provenance:
+
+| Skill | Source |
+| --- | --- |
+| `tufte-viz` | gist `aparente/e48c353755958621b3c0004593105a90` — Tufte data-viz principles |
+| `elements-of-style` | `github.com/alexanderSolod/skill-library` — Strunk & White prose editing |
+| `pitch-builder`, `frame-control`, `pitch-review` | `github.com/alexanderSolod/skill-library` — "Pitch Anything" (Oren Klaff) |
+
 ## Third-party skills (NOT tracked — see `.gitignore`)
 
 Managed by the [`skills` CLI](https://github.com/vercel-labs/skills) or app bundles and

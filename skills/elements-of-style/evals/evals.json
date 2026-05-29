@@ -1,0 +1,47 @@
+{
+  "skill_name": "elements-of-style",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Please review and improve this email I'm about to send to my team:\n\nI am writing to bring to your attention the fact that the project deadline, which was originally scheduled for March 15, has been moved to April 1 due to the fact that there were a number of unforeseen complications that arose during the development phase. It is my personal opinion that we should not fail to take advantage of this additional time. I would like to suggest that all team members should try and utilize this opportunity to hopefully finalize their respective deliverables. Please do not hesitate to contact me if you have any questions.",
+      "expected_output": "A review identifying wordiness (the fact that, do not hesitate, etc.), passive voice, negative phrasing, misused words (utilize, hopefully, finalize, respective), and a rewrite that is substantially shorter and more direct.",
+      "files": [],
+      "assertions": [
+        {"id": "format-has-review-section", "text": "Output contains a '## Review' heading"},
+        {"id": "format-has-rewrite-section", "text": "Output contains a '## Rewrite' heading"},
+        {"id": "format-has-summary", "text": "Output contains a '## Summary' heading"},
+        {"id": "cites-specific-rules", "text": "Review cites at least one Strunk & White rule by name"},
+        {"id": "rewrite-is-shorter", "text": "Rewrite is shorter than the 95-word original"},
+        {"id": "quotes-offending-text", "text": "Review quotes at least one problematic phrase from the original"}
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Can you clean up this intro paragraph for my blog post? It feels clunky:\n\nIn the last analysis, there is no doubt but that artificial intelligence is literally transforming each and every one of our lives in very meaningful ways. It is interesting to note that this technology, which was once considered as being something that only existed in science fiction, has now become a factor in practically most everybody's daily routine. The enormity of this change is not something that should be underestimated. While many people are enthused about the possibilities, others could care less about the implications, which is a rather unique perspective in this day and age.",
+      "expected_output": "A review catching bankrupt expressions (in the last analysis, each and every one), misused words (literally, enormity, enthuse, could care less, unique with qualifier), overstatement, qualifiers (very, rather), and a concrete, vigorous rewrite.",
+      "files": [],
+      "assertions": [
+        {"id": "format-has-review-section", "text": "Output contains a '## Review' heading"},
+        {"id": "format-has-rewrite-section", "text": "Output contains a '## Rewrite' heading"},
+        {"id": "format-has-summary", "text": "Output contains a '## Summary' heading"},
+        {"id": "cites-specific-rules", "text": "Review cites at least one Strunk & White rule by name"},
+        {"id": "catches-misused-words", "text": "Review identifies at least 3 commonly misused words/expressions"},
+        {"id": "rewrite-is-shorter", "text": "Rewrite is shorter than the 85-word original"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I wrote this paragraph for our project README. Can you make it better?\n\nThis library is utilized for the facilitation of data processing tasks that are oriented around the transformation of large datasets. It was designed with the aim of being easy to use. The configuration can be personalized by the user to fit their specific needs. There are several factors that should be considered when setting up the system. Being a complex tool, users may find that there is a need to consult the documentation frequently. The performance is currently not impacted by the size of the dataset due to the fact that the processing is done in parallel.",
+      "expected_output": "A review catching utilize, facilitation, -oriented, personalize, factor, currently (redundant), the fact that, passive voice, dangling modifier, and a rewrite that is active, concrete, and roughly half the length.",
+      "files": [],
+      "assertions": [
+        {"id": "format-has-review-section", "text": "Output contains a '## Review' heading"},
+        {"id": "format-has-rewrite-section", "text": "Output contains a '## Rewrite' heading"},
+        {"id": "format-has-summary", "text": "Output contains a '## Summary' heading"},
+        {"id": "cites-specific-rules", "text": "Review cites at least one Strunk & White rule by name"},
+        {"id": "catches-dangling-modifier", "text": "Review identifies the dangling modifier"},
+        {"id": "rewrite-is-shorter", "text": "Rewrite is shorter than the 82-word original"}
+      ]
+    }
+  ]
+}

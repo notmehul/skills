@@ -1,9 +1,20 @@
-# Third-party skills are CLI/app-managed and reproducible — not tracked here.
-# Reinstall them with the commands in README.md (see "Third-party skills").
+# Third-party skills are CLI/app-managed and reproducible, so they are not tracked here.
+# Reinstall them with the commands in README.md (see "Installed from elsewhere").
 skills/ui-ux-pro-max/
 skills/find-skills/
-skills/remotion-best-practices/
 # cua-driver is a symlink into /Applications/CuaDriver.app (machine-specific)
 skills/cua-driver
 
+# Private forks of claude.ai org skills: these carry named people, warmth
+# ratings and portfolio internals. They stay on this machine.
+skills/lead-finder/
+skills/warm-path-finder/
+
+# Local scratch
+skills-backup-descriptions/
+skills-retired-*/
 .DS_Store
+
+# Python bytecode
+__pycache__/
+*.pyc

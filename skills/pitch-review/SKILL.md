@@ -129,7 +129,7 @@ People decide they want something BEFORE they understand it. Brain scans show de
 **Hot cognition triggers to add:**
 1. Intrigue: something they want but can't have yet
 2. Prize positioning: "I'm choosy about who I work with"
-3. Time constraint: "This needs to happen by [date]"
+3. Time constraint: "This needs to happen by [date]", only when a real constraint the reader could check sits behind the date (a round close, a cohort, capacity). Otherwise leave it out; an invented deadline costs more than none.
 4. Moral authority: "We do things right. Can you?"
 
 **Restructure principle:** Emotion first, logic second. The croc brain must say "yes" before the neocortex gets to analyze.

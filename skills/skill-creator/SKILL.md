@@ -1,6 +1,6 @@
 ---
 name: skill-creator
-description: Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.
+description: "Scaffold a new skill, restructure an existing one, or run evals to measure whether it actually triggers. Use for \"create a skill\", \"why isn't this skill firing\", or benchmarking a description's triggering accuracy. `writing-for-agents` owns how the prose itself should be written."
 ---
 
 # Skill Creator

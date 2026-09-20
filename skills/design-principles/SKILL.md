@@ -1,6 +1,7 @@
 ---
 name: design-principles
-description: Enforce a precise, minimal design system. Use this skill when building dashboards, admin interfaces, or any UI that needs Jony Ive-level precision - clean, modern, minimalist with taste. Every pixel matters.
+description: "Reference for a precise, minimal design system: spacing scale, type ramp, restraint rules, the pixel-level decisions a dashboard or admin UI needs. Reached from `ui-ux` when the work needs tightness rather than a style direction."
+disable-model-invocation: true
 ---
 
 # Design Principles
@@ -235,3 +236,9 @@ Every interface should look designed by a team that obsesses over 1-pixel differ
 Different products want different things. A developer tool wants precision and density. A collaborative product wants warmth and space. A financial product wants trust and sophistication. Let the product context guide the aesthetic.
 
 The goal: intricate minimalism with appropriate personality. Same quality bar, context-driven execution.
+
+<!-- marshmallow:alignment:start -->
+## Marshmallow Alignment
+
+Before using this skill, read `~/.marshmallow/overlays/design-principles.md` and apply it as the recall-aware alignment layer.
+<!-- marshmallow:alignment:end -->

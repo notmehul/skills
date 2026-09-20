@@ -81,7 +81,7 @@ A pitch narrative is a series of tension loops. Push, then pull. Create tension,
 Ask the user about:
 - **Budget:** How they allocate capital. Focus on demonstrating skill at budgeting (highly respected) rather than optimistic revenue projections.
 - **Competition:** Two questions only: (1) How easy is it for new competitors to enter? (2) How easy is it for customers to switch?
-- **Secret Sauce:** Their unfair competitive advantage in one or two sentences.
+- **Secret Sauce:** Their unfair competitive advantage in one or two sentences. If the pitch is for a tool, run it live on their own material (their repo, their MCP server, their data) instead of a sample. Proof on their artifact beats any claim.
 
 Draft this phase as a narrative with tension loops woven in, not a bulleted list of facts.
 
@@ -92,6 +92,7 @@ In clear, concise terms, cover:
 - When it will be delivered
 - How it will be delivered
 - Their role and responsibilities (if any)
+- The one risk they're carrying, and the gate that removes it (for example, a paid 30-day pilot with a named milestone and a clean exit if it's missed)
 
 Keep it brief and high-level. No drill-downs. Remind the user: the most important deliverable in the deal is YOU. The deal terms matter, but people invest in people.
 
@@ -122,6 +123,8 @@ Set a real, fair time constraint:
 - "This deal will be fully committed by [realistic date]."
 - Use the "deal train" metaphor: good deals stop at the station, pick up passengers, and leave on schedule.
 
+Name the constraint behind the date first: a round close, a cohort start, a capacity limit. If the listener couldn't check it, or you wouldn't hold to it, leave the time frame out. An invented deadline costs more than none.
+
 **Hot Cognition 4: Moral Authority Frame**
 Demonstrate high ethical standards:
 - "We do things right. No games, no missing numbers, just clean paper."
@@ -132,11 +135,13 @@ Demonstrate high ethical standards:
 This is the most dangerous moment. Small mistakes here get amplified into deal killers. Neediness (validation-seeking) is the #1 deal killer.
 
 Instead of asking "So, what do you think?", make three points:
-1. This deal will be fully committed in [timeframe]
+1. This deal will be fully committed in [timeframe] (only with a real constraint behind it, see Hot Cognition 3)
 2. We don't need your [money/partnership], but we want the strategic value you bring
 3. I think you're interesting, but are you really the right fit? We need to know more about YOU.
 
 Then: stop talking. Wait for them to react. Zero validation-seeking.
+
+Before you leave, set one next step on your terms, with a date: "I have Thursday at 2 for the pilot scope." Withdrawal without a date is how deals go quiet.
 
 The Anti-Neediness Formula (Tao of Steve):
 1. Eliminate your desires. Want nothing.

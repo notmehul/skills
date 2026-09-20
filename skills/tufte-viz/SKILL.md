@@ -1,14 +1,6 @@
 ---
 name: tufte-viz
-description: |
-  Ideate and critique data visualizations using Edward Tufte's principles from "The Visual Display of Quantitative Information." Use this skill when:
-  (1) Designing new data visualizations or charts
-  (2) Critiquing or improving existing visualizations
-  (3) Reviewing dashboards or reports for graphical integrity
-  (4) Deciding between visualization approaches
-  (5) Reducing chartjunk or improving data-ink ratio
-  (6) Planning small multiples or high-density displays
-  Applies principles: data-ink ratio, chartjunk elimination, graphical integrity, lie factor, small multiples, and data density.
+description: "Critique or redesign a chart, dashboard, or report against Tufte's principles: lie factor, data-ink ratio, chartjunk, small multiples, data density. Use when a visualisation reads as noisy or misleading, or when choosing between chart approaches. The bundled `dataviz` skill owns the build procedure and palette validation."
 ---
 
 # Tufte Visualization Ideation

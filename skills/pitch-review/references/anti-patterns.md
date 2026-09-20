@@ -17,7 +17,9 @@ AFTER: "We're committing resources to this in Q2. If you want in, let's lock ter
 ### The Apologetic Follow-Up
 BEFORE: "Sorry to follow up again -- just wanted to check if you had a chance to review the proposal?"
 WHY IT'S BAD: "Sorry" = neediness. "Just wanted to check" = validation-seeking. The question mark at the end turns a statement into a plea.
-AFTER: "We're finalizing partner commitments this week. Let me know by Thursday if you want to be part of it."
+AFTER (with a real constraint): "Our pilot cohort starts on the 30th and has two slots left. Tell me by Thursday if you want one."
+AFTER (no real constraint): "One new thing since we spoke: [result or change]. I have Thursday at 2 to walk through it."
+Never invent the deadline. If the sender couldn't prove the constraint, use the second form.
 
 ### The Over-Explainer
 BEFORE: "The reason I'm reaching out is that I noticed your company recently expanded into the European market, and given our extensive experience with European regulatory frameworks, I thought there might be a natural synergy between our capabilities and your growth objectives."

@@ -164,12 +164,13 @@ Then: stop talking. Wait for them to react. Zero validation-seeking.
 
 When the user describes a situation, follow this process:
 
-1. **Identify the frame they're facing** (Power, Time, Analyst, or a combination)
-2. **Assess their current status position** (alpha, beta, or neutral)
-3. **Recommend specific counter-tactics** with example scripts they can actually say
-4. **Help them craft their intrigue story** if they don't have one
-5. **Flag any neediness signals** in their current approach
-6. **Role-play the interaction** if the user wants to practice
+1. **Sort the pushback first: frame move or real constraint?** A committee, a security review, a budget cycle or a legal requirement is a real constraint. It gets a straight answer and evidence, not a counter. Frame tactics are for status plays.
+2. **Identify the frame they're facing** (Power, Time, Analyst, or a combination)
+3. **Assess their current status position** (alpha, beta, or neutral)
+4. **Recommend specific counter-tactics** with example scripts they can actually say
+5. **Help them craft their intrigue story** if they don't have one
+6. **Flag any neediness signals** in their current approach
+7. **Role-play the interaction** if the user wants to practice
 
 Always provide concrete scripts and language, not abstract advice. The user needs words they can say out loud.
 
@@ -185,3 +186,9 @@ Always provide concrete scripts and language, not abstract advice. The user need
 8. Every negotiation is a game. When both sides know the game is on, the interaction becomes exciting and productive for everyone.
 
 For additional examples and scenario walkthroughs, see `references/scenario-playbook.md`.
+
+<!-- marshmallow:alignment:start -->
+## Marshmallow Alignment
+
+Before using this skill, read `~/.marshmallow/overlays/frame-control.md` and apply it as the recall-aware alignment layer.
+<!-- marshmallow:alignment:end -->

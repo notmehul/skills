@@ -151,7 +151,7 @@ there are more than thirty.
 
 ## Before handing back
 
-Run `python3 ${CLAUDE_SKILL_DIR}/scripts/render_sheet.py workspace/<slug>`.
-Read `checks.md`. Fix every fail in the tab file it names and render again
+Run the `render_sheet.py <workspace>` command your dispatch prompt gives you;
+it carries the absolute path to the script. Read `checks.md`. Fix every fail in the tab file it names and render again
 until the result line reads PASS. Warnings are read and either fixed or
 mentioned in the delivery note.

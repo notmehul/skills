@@ -150,8 +150,6 @@ place.
 
 ---
 
-Vendored from [notmehul/mia](https://github.com/notmehul/mia) @ `1afefd1`, where
-it lives as a Claude Code plugin with its tests and design docs. The only local
-change: `references/compose.md` used a `<plugin>` path placeholder that does not
-resolve outside a plugin install, now `${CLAUDE_SKILL_DIR}`. Update this copy by
-re-copying `skills/mia/` from that repo.
+Vendored from [notmehul/mia](https://github.com/notmehul/mia) @ `e9699a4`, where
+it lives as a Claude Code plugin with its tests and design docs. No local
+changes: edit it there, then re-copy `skills/mia/` from that repo into this one.

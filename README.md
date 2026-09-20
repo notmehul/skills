@@ -78,15 +78,16 @@ Take the ones you want instead of all of them. They are independent folders, exc
 | `pitch-review` | Audit one. |
 | `frame-control` | Handle pushback in the room, after sorting a frame move from a real constraint. |
 | `relationship-brief` | Brief yourself on one person before you talk to them. |
-| `mi-os` | Turn a pitch or a market into testable claims and a sourced evidence pack. |
+| `mia` | Market intelligence on an early-stage deal: one combined TAM, trends, competitors, founder claims checked, as an xlsx the analyst edits. |
 
 ## Skills that expect my machine
 
 Some of these read local context that you will not have:
 
-- `mehul-voice`, `mi-os`, `relationship-brief`, `design-principles`, `frontend-design` and `frame-control` point at [Marshmallow](https://github.com/notmehul/marshmallow) under `~/.marshmallow/`. Without it, they degrade to the written guidance, which still works.
+- `mehul-voice`, `relationship-brief`, `design-principles`, `frontend-design` and `frame-control` point at [Marshmallow](https://github.com/notmehul/marshmallow) under `~/.marshmallow/`. Without it, they degrade to the written guidance, which still works.
 - `generate` shells out to Codex CLI.
-- `ui-ux` and `skill-creator` carry scripts and data files alongside `SKILL.md`; clone the whole folder, not just the markdown.
+- `mia` is Claude Code only: it dispatches research subagents, and its file paths use `${CLAUDE_SKILL_DIR}`, which no other harness expands. It renders its workbook with Python and openpyxl, installed on first use by `scripts/setup.sh`.
+- `ui-ux`, `skill-creator` and `mia` carry scripts and data files alongside `SKILL.md`; clone the whole folder, not just the markdown.
 
 Two skills are missing from this repo on purpose. My `lead-finder` and `warm-path-finder` forks name real people and carry relationship data, so they stay on my machine.
 
@@ -113,7 +114,9 @@ npx skills add vercel-labs/skills -a claude-code                     # find-skil
 
 ## Provenance and licence
 
-Mine, under the MIT licence in [LICENSE](LICENSE): `blast-radius`, `cold-email`, `content-strategy`, `create-verification-skill`, `customer-research`, `diagnosing-bugs`, `git-release`, `grilling`, `generate`, `launch`, `mehul-voice`, `mi-os`, `product-marketing`, `prove-it-works`, `relationship-brief`, `ship-check`, `show-me-your-work`, `unslop`, `wizard`, `writing-for-agents`.
+Mine, under the MIT licence in [LICENSE](LICENSE): `blast-radius`, `cold-email`, `content-strategy`, `create-verification-skill`, `customer-research`, `diagnosing-bugs`, `git-release`, `grilling`, `generate`, `launch`, `mehul-voice`, `product-marketing`, `prove-it-works`, `relationship-brief`, `ship-check`, `show-me-your-work`, `unslop`, `wizard`, `writing-for-agents`.
+
+`mia` is mine too, but it lives in its own repo, [notmehul/mia](https://github.com/notmehul/mia), where it is a Claude Code plugin with tests and design docs. What is here is a copy of that plugin's `skills/mia/`, pinned in the footer of its `SKILL.md`. Change it there, not here.
 
 The rest came from other people and keep their own terms. Where I changed one, the change is mine and the original is theirs:
 

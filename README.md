@@ -89,6 +89,15 @@ Some of these read local context that you will not have:
 - `mia` is Claude Code only: it dispatches research subagents, and its file paths use `${CLAUDE_SKILL_DIR}`, which no other harness expands. It renders its workbook with Python and openpyxl, installed on first use by `scripts/setup.sh`.
 - `ui-ux`, `skill-creator` and `mia` carry scripts and data files alongside `SKILL.md`; clone the whole folder, not just the markdown.
 
+### Grok Bot / harness (synced from shared workflows)
+
+| Skill | For |
+| --- | --- |
+| `assets-visual-taste` | Visual taste brief for covers and post graphics (Pinterest-derived). |
+| `fill-biome-build-with-us-form` | Fill Biome's full-time Build With Us form; stop before submit. |
+| `send-email-via-computer` | Send mail via browser Gmail only — never a mail API. |
+| `studio-context` | Load the public-studio Notion brief before drafting or publishing. |
+
 Two skills are missing from this repo on purpose. My `lead-finder` and `warm-path-finder` forks name real people and carry relationship data, so they stay on my machine.
 
 ## Forks of synced skills

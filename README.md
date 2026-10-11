@@ -118,6 +118,7 @@ These are managed by the [`skills` CLI](https://github.com/vercel-labs/skills) o
 ```sh
 npx skills add nextlevelbuilder/ui-ux-pro-max-skill -a claude-code   # ui-ux-pro-max
 npx skills add vercel-labs/skills -a claude-code                     # find-skills
+npx skills add wheresryan22/anatomy -g -a claude-code -a codex -a cursor -a opencode   # anatomy: interactive isometric SVG figures (MIT)
 # cua-driver: provided by CuaDriver.app (symlink into /Applications)
 ```
 

@@ -2,6 +2,7 @@
 # Reinstall them with the commands in README.md (see "Installed from elsewhere").
 skills/ui-ux-pro-max/
 skills/find-skills/
+skills/anatomy/
 # cua-driver is a symlink into /Applications/CuaDriver.app (machine-specific)
 skills/cua-driver
 

@@ -677,3 +677,9 @@ Scope notice: This checklist is for App UI (iOS/Android/React Native/Flutter).
 - [ ] `curl -sL <url>` shows the headline, the what-it-is line, and the primary CTA in the raw HTML (agents and AI crawlers mostly don't run JavaScript; `-L` follows the apex-to-www redirect most hosts add)
 - [ ] `curl -sIL -A ClaudeBot <url>` ends on a 200, not a CDN bot challenge
 - [ ] Shared links preview: `curl -sL <url> | grep -E 'og:|twitter:'` shows `og:image` (1200x630) and `twitter:card` set to `summary_large_image`; a public repo also gets a GitHub social preview (1280x640)
+
+<!-- marshmallow:alignment:start -->
+## Marshmallow Alignment
+
+Before using this skill, read `~/.marshmallow/overlays/ui-ux.md` and apply it as the recall-aware alignment layer.
+<!-- marshmallow:alignment:end -->

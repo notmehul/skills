@@ -64,3 +64,9 @@ I close on a question that reframes the whole thing, or one compact line, then t
 Run unslop. Then read it once as me: does it start on the thing, does one image carry the argument, does a long sentence land on a short one, is there a joke deflating the biggest claim, did I show the mechanism instead of lecturing the moral, is honesty truth-well-told rather than self-downplay, would I say any of it out loud. If a line came from this file or an essay, rewrite it.
 
 Then the cold read. Hand the draft to a fresh subagent (or a fresh session) with none of our context and ask what this is and who it's for, in one line. If it can't say, the draft leans on something the reader never saw; fix that before it goes to me.
+
+<!-- marshmallow:alignment:start -->
+## Marshmallow Alignment
+
+Before using this skill, read `~/.marshmallow/overlays/mehul-voice.md` and apply it as the recall-aware alignment layer.
+<!-- marshmallow:alignment:end -->

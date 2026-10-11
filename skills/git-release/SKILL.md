@@ -57,3 +57,9 @@ AI memory MCP slop fest." Pair with `mehul-voice` for narrative sections.
 
 - The repo has an established commit/PR/changelog convention that differs from
   the above — follow the repo, not this default.
+
+<!-- marshmallow:alignment:start -->
+## Marshmallow Alignment
+
+Before using this skill, read `~/.marshmallow/overlays/git-release.md` and apply it as the recall-aware alignment layer.
+<!-- marshmallow:alignment:end -->

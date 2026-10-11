@@ -76,3 +76,9 @@ Apply Edward Tufte's principles to design clear, honest, high-density data visua
 - [ ] Reveals multiple levels of detail (micro + macro)
 - [ ] Layering: primary data dominates, secondary recedes
 - [ ] Appropriate data density
+
+<!-- marshmallow:alignment:start -->
+## Marshmallow Alignment
+
+Before using this skill, read `~/.marshmallow/overlays/tufte-viz.md` and apply it as the recall-aware alignment layer.
+<!-- marshmallow:alignment:end -->

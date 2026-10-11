@@ -30,3 +30,9 @@ An empty frontier is not a design yet, it is a pile of settled answers. Read the
 Present the design in sections of 200-300 words and stop after each to ask whether it holds. Cover the shape of the thing, its parts, how data moves, what happens when it fails, and how it gets verified. A section the user corrects reopens its branch of the tree: go back, re-ask, land it again.
 
 Keep this in the conversation. A document is the exception, not the finish line, and writing one early buries the disagreement you were trying to surface. Write `docs/plans/YYYY-MM-DD-<topic>-design.md` only when the user asks for it, or when the work will outlive this session and someone else has to pick it up.
+
+<!-- marshmallow:alignment:start -->
+## Marshmallow Alignment
+
+Before using this skill, read `~/.marshmallow/overlays/grilling.md` and apply it as the recall-aware alignment layer.
+<!-- marshmallow:alignment:end -->

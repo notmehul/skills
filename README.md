@@ -45,6 +45,7 @@ Take the ones you want instead of all of them. They are independent folders, exc
 | --- | --- |
 | `diagnosing-bugs` | Build the failing loop before theorising about the cause. |
 | `blast-radius` | Find what a change breaks outside its own diff. |
+| `api-design` | Design or review an HTTP API or an MCP tool surface without breaking its consumers. |
 | `prove-it-works` | Check the real artifact before saying done. |
 | `create-verification-skill` | Generate a project-local skill that drives your app the way a user does. |
 | `interrogate` | Adversarial multi-model review of a diff. |
@@ -138,6 +139,7 @@ The rest came from other people and keep their own terms. Where I changed one, t
 | `tufte-viz` | gist `aparente/e48c353755958621b3c0004593105a90` | as published |
 | `remotion-best-practices` | [remotion-dev/skills](https://github.com/remotion-dev/skills), forked to add a beat sheet and a hook test | as published |
 | `skill-creator` | Anthropic | as published |
+| `api-design` | Sean Goedecke, [Everything I know about good API design](https://www.seangoedecke.com/good-api-design/): his rules in my wording, plus an MCP translation of each | ideas only, no text copied |
 | `product-marketing`, `cold-email`, `content-strategy`, `launch`, `customer-research`, and parts of several others | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) | MIT, see [NOTICE-marketingskills.md](NOTICE-marketingskills.md) |
 
 If something here is yours and the attribution is wrong, open an issue and I will fix it.

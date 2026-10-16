@@ -19,6 +19,15 @@
       "skillFolderHash": "3013fdeb8a11b10b1eb795ec3ae8bfca38f7c26d",
       "installedAt": "2026-03-31T18:48:50.739Z",
       "updatedAt": "2026-03-31T18:48:50.739Z"
+    },
+    "anatomy": {
+      "source": "wheresryan22/anatomy",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wheresryan22/anatomy.git",
+      "skillPath": "SKILL.md",
+      "skillFolderHash": "dbf697a527bbf7d358668e1557cb1e35ff725d46",
+      "installedAt": "2026-10-11T19:10:18.789Z",
+      "updatedAt": "2026-10-11T19:10:18.789Z"
     }
   },
   "dismissed": {

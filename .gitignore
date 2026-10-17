@@ -19,3 +19,6 @@ skills-retired-*/
 __pycache__/
 *.pyc
 .venv/
+
+# Research briefs behind the Oct 2026 upgrade: local only, they name people and companies
+research-2026-10/

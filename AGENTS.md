@@ -34,21 +34,34 @@ cannot be taken back. Before staging, read the diff for:
 Anything private gets a `.gitignore` line, not a commit. `lead-finder` and
 `warm-path-finder` are ignored for exactly this reason.
 
-## A new skill needs three things
+## A new skill needs four things
 
 1. The folder at `skills/<name>/` with a `SKILL.md`, written to the bar in
-   `skills/writing-for-agents/`.
+   `skills/writing-for-agents/` (its `SKILL-MECHANICS.md` has the portable-skill
+   rules and the description budget: about 250 characters, trigger clause first,
+   nothing only one harness understands in the body, `metadata.updated` and
+   `metadata.source` filled in).
 2. A symlink so Claude Code sees it:
    `ln -s ../../.agents/skills/<name> ~/.claude/skills/<name>`.
 3. A row in the right table in `README.md`, and a line in the provenance section
    when it came from someone else.
+4. A line under the current date in `CHANGELOG.md`.
+
+## Removing or merging a skill
+
+Nothing disappears silently. The `CHANGELOG.md` entry names the skill, what
+replaced it, and why; the symlink in `~/.claude/skills/` goes with the folder;
+the `README.md` row goes too. A skill mined from elsewhere is updated in place
+and credited in `metadata.source`, never copied in beside the existing one.
 
 ## Skills that live in another repo
 
 `mia` is a copy of `skills/mia/` from `notmehul/mia`, and `remotion-best-practices`
 is a fork of an upstream skill. Change those at the source and re-copy, rather
 than editing the copy and letting the two drift. The footer of each `SKILL.md`
-records where it came from and what was changed locally.
+records where it came from and what was changed locally. `mia` is Claude Code
+only and its `scripts/setup.sh` creates `.venv/` at this repo's root, which
+`.gitignore` covers.
 
 Skills under `~/.claude/skills/synced/` belong to the claude.ai account and are
 overwritten on every sync. Fork them into this repo instead; `README.md` has the

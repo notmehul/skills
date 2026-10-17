@@ -14,8 +14,8 @@ git clone https://github.com/notmehul/skills.git ~/.agents
 
 | Tool | What it needs |
 | --- | --- |
-| **Codex** | nothing; it reads `~/.agents/skills` and follows symlinks |
-| **OpenCode** | nothing; it reads `~/.agents/skills` |
+| **Codex** | nothing; it reads `$HOME/.agents/skills` and follows symlinks. The skill listing gets 2% of the context window by default, so with a library this size set `[skills] max_context_tokens = 10000` in `~/.codex/config.toml` or it shortens descriptions silently |
+| **OpenCode** | nothing; it reads `~/.agents/skills`. It also reads `~/.claude/skills`, so with the symlinks below it sees each skill twice; on OpenCode 2.0.29 or later set `OPENCODE_DISABLE_CLAUDE_CODE_SKILLS=1` |
 | **Claude Code** | reads `~/.claude/skills`, so symlink each skill in |
 
 ```sh
@@ -24,7 +24,9 @@ for d in ~/.agents/skills/*/; do
 done
 ```
 
-Take the ones you want instead of all of them. They are independent folders, except where a skill names another by name in its text.
+Take the ones you want instead of all of them. They are independent folders, except where a skill names another by name in its text. One at a time: `npx skills add notmehul/skills -s <name>` or `gh skill install notmehul/skills` also work and record provenance.
+
+Every description stays at or under about 250 characters with the trigger first, because that is what the harness reads on every turn; the body loads only when the description matches.
 
 ## The skills
 
@@ -47,6 +49,7 @@ Take the ones you want instead of all of them. They are independent folders, exc
 | `blast-radius` | Find what a change breaks outside its own diff. |
 | `api-design` | Design or review an HTTP API or an MCP tool surface without breaking its consumers. |
 | `prove-it-works` | Check the real artifact before saying done. |
+| `verify` | The same, under the name Claude Code runs before each commit. |
 | `create-verification-skill` | Generate a project-local skill that drives your app the way a user does. |
 | `interrogate` | Adversarial multi-model review of a diff. |
 | `grilling` | Interview me to a settled design, one round at a time. |
@@ -75,20 +78,38 @@ Take the ones you want instead of all of them. They are independent folders, exc
 | `content-strategy` | Research-led content built around an artifact people keep. |
 | `cold-email` | One hook, one proof, one ask. |
 | `launch` | The readiness gate, launch day, the week after. |
-| `pitch-builder` | Build a pitch, on the Pitch Anything frame. |
-| `pitch-review` | Audit one. |
-| `frame-control` | Handle pushback in the room, after sorting a frame move from a real constraint. |
+| `pitching` | Build a pitch, review one, or handle the room, on the Pitch Anything frame. One skill, three branches. |
 | `relationship-brief` | Brief yourself on one person before you talk to them. |
 | `mia` | Market intelligence on an early-stage deal: one combined TAM, trends, competitors, founder claims checked, as an xlsx the analyst edits. |
+
+**Business use cases to ML and agents**
+
+Added Oct 2026 for a role that takes business use cases to models, agents and pilots. Each is distilled from a dated research brief; the examples use Indian home loans where a domain is needed.
+
+| Skill | For |
+| --- | --- |
+| `use-case-discovery` | Shadow the operator, map and classify the workflow, score and gate candidates, write the one-page brief and eval spec. |
+| `pilot-rollout` | Shadow, assisted, autonomous per action category, with gates, rollback triggers, a kill date and a handoff pack for a non-technical maintainer. |
+| `ai-governance` | The system card, DPDP, an EU AI Act screen, vendor data terms, and the India finance-bot pre-flight. |
+| `building-agents` | Runtime choice, proposal → confirm → execute, the event row, permissions, durability, when one agent is enough. |
+| `llm-evals` | The afternoon eval loop, golden sets from traffic, judge calibration, agent trajectory checks, CI gates, red-teaming. |
+| `applied-ml` | The prediction sentence, the baseline ladder, GBDT or tabular foundation model, split design, leakage, when to stop tuning. Forecasting, experiments and the stack as references. |
+| `data-analysis` | The analytics guide file, a reliable text-to-SQL loop, assumptions logs, metric reconciliation, the decision table. |
+| `knowledge-and-extraction` | Is a knowledge base the answer, which retrieval route, typed extraction from documents, memory as files. |
+| `research-brief` | A dated, sourced brief with an UNVERIFIED discipline; literature review as a branch. |
+| `conversation-design` | A chatbot or voice flow for high-intent Indian consumers in a regulated setting. |
+| `lending-domain` | The Indian home-loan journey, its data, documents, economics, and what works in production. |
+| `study-design` | A small, rigorous human-AI study: design checklist, preregistration, measurement, analysis, venue. |
 
 ## Skills that expect my machine
 
 Some of these read local context that you will not have:
 
-- `mehul-voice`, `relationship-brief`, `design-principles`, `frontend-design` and `frame-control` point at [Marshmallow](https://github.com/notmehul/marshmallow) under `~/.marshmallow/`. Without it, they degrade to the written guidance, which still works.
+- `mehul-voice`, `relationship-brief`, `design-principles`, `frontend-design`, `git-release`, `grilling`, `pitching`, `tufte-viz` and `ui-ux` point at [Marshmallow](https://github.com/notmehul/marshmallow) under `~/.marshmallow/`. Without it, they degrade to the written guidance, which still works.
+- The twelve business-to-ML skills cite research briefs under `research-2026-10/`, which is local and gitignored because the briefs quote named people and company figures. The skills themselves carry everything an agent needs.
 - `generate` shells out to Codex CLI.
 - `mia` is Claude Code only: it dispatches research subagents, and its file paths use `${CLAUDE_SKILL_DIR}`, which no other harness expands. It renders its workbook with Python and openpyxl, installed on first use by `scripts/setup.sh`.
-- `ui-ux`, `skill-creator` and `mia` carry scripts and data files alongside `SKILL.md`; clone the whole folder, not just the markdown.
+- `ui-ux`, `skill-creator` and `mia` carry scripts and data files alongside `SKILL.md`; clone the whole folder, not just the markdown. `ui-ux` is a tracked, modified copy of its upstream (the provenance table has the source).
 
 ### Grok Bot / harness (synced from shared workflows)
 
@@ -107,7 +128,7 @@ Skills synced from a claude.ai account land in `~/.claude/skills/synced/` and ap
 
 1. Copy it into `skills/<same name>/`, record `metadata.forked-from` (skill id and `updatedAt`), and edit only the copy.
 2. Symlink it into `~/.claude/skills/`. The local skill wins `/<name>`.
-3. Hide the synced twin with `"skillOverrides": {"anthropic-skills:<name>": "off"}` in `~/.claude/settings.json`, so the model is not choosing between two competing descriptions. (Tested 2026-09-19 on Claude Code v2.1.278.)
+3. Hide the synced twin so the model is not choosing between two competing descriptions: open `/skills` in Claude Code, highlight the synced copy, press Space until it reads `off`, then Esc. That writes a `skillOverrides` entry to `.claude/settings.local.json` under whatever key Claude Code uses for the synced skill. (As of Oct 2026 the overrides had not been applied on this machine; the step is the fix.)
 4. Upstream changes do not arrive on their own. Diff the synced copy against the fork by hand.
 
 In this repo, `unslop` is such a fork.
@@ -117,7 +138,6 @@ In this repo, `unslop` is such a fork.
 These are managed by the [`skills` CLI](https://github.com/vercel-labs/skills) or by an app bundle, so they are not tracked here:
 
 ```sh
-npx skills add nextlevelbuilder/ui-ux-pro-max-skill -a claude-code   # ui-ux-pro-max
 npx skills add vercel-labs/skills -a claude-code                     # find-skills
 npx skills add wheresryan22/anatomy -g -a claude-code -a codex -a cursor -a opencode   # anatomy: interactive isometric SVG figures (MIT)
 # cua-driver: provided by CuaDriver.app (symlink into /Applications)
@@ -125,7 +145,7 @@ npx skills add wheresryan22/anatomy -g -a claude-code -a codex -a cursor -a open
 
 ## Provenance and licence
 
-Mine, under the MIT licence in [LICENSE](LICENSE): `blast-radius`, `cold-email`, `content-strategy`, `create-verification-skill`, `customer-research`, `diagnosing-bugs`, `git-release`, `grilling`, `generate`, `launch`, `mehul-voice`, `product-marketing`, `prove-it-works`, `relationship-brief`, `ship-check`, `show-me-your-work`, `unslop`, `wizard`, `writing-for-agents`.
+Mine, under the MIT licence in [LICENSE](LICENSE): `blast-radius`, `cold-email`, `content-strategy`, `create-verification-skill`, `customer-research`, `diagnosing-bugs`, `git-release`, `grilling`, `generate`, `launch`, `mehul-voice`, `product-marketing`, `prove-it-works`, `verify`, `relationship-brief`, `ship-check`, `show-me-your-work`, `unslop`, `wizard`, `writing-for-agents`, and the twelve business-to-ML skills (`use-case-discovery`, `pilot-rollout`, `ai-governance`, `building-agents`, `llm-evals`, `applied-ml`, `data-analysis`, `knowledge-and-extraction`, `research-brief`, `conversation-design`, `lending-domain`, `study-design`), which distil public documentation, regulation and papers named in each skill's `metadata.source`; where a checklist shape was taken from another library it is credited there.
 
 `mia` is mine too, but it lives in its own repo, [notmehul/mia](https://github.com/notmehul/mia), where it is a Claude Code plugin with tests and design docs. What is here is a copy of that plugin's `skills/mia/`, pinned in the footer of its `SKILL.md`. Change it there, not here.
 
@@ -133,7 +153,7 @@ The rest came from other people and keep their own terms. Where I changed one, t
 
 | Skill | From | Licence |
 | --- | --- | --- |
-| `elements-of-style`, `pitch-builder`, `pitch-review`, `frame-control` | [alexanderSolod/skill-library](https://github.com/alexanderSolod/skill-library) | MIT |
+| `elements-of-style`, `pitching` (a merge of their `pitch-builder`, `pitch-review` and `frame-control`) | [alexanderSolod/skill-library](https://github.com/alexanderSolod/skill-library) | MIT |
 | `ui-ux` | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill): their database, with the description rewritten to route into the rest of the design skills and a checklist added for public web pages | MIT |
 | `resume-builder` | [dabydat/resume-builder-skill](https://github.com/dabydat/resume-builder-skill), rewritten for harnesses: content guidance only | MIT |
 | `tufte-viz` | gist `aparente/e48c353755958621b3c0004593105a90` | as published |

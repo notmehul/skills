@@ -11,7 +11,7 @@ metadata:
 
 # Pitching
 
-Three branches on one mechanism: build a pitch, review one, handle the room. A pitch is written by the pitcher's neocortex (logic, data) and received by the listener's croc brain (survival, emotion, short attention), which filters most of the message out before the analytical mind sees it. So the work is frame, tension and status first, and the numbers second, as justification for a decision the listener has already made. Attention runs on a dopamine (desire) and norepinephrine (tension) cocktail that lasts about 20 minutes, so no pitch runs longer.
+Three branches on one mechanism: build a pitch, review one, handle the room. Klaff's model, which this skill takes as a working frame rather than settled science: a pitch is written by the pitcher's neocortex (logic, data) and received by the listener's croc brain (survival, emotion, short attention), which filters most of the message out before the analytical mind sees it. So the work is frame, tension and status first, and the numbers second, as justification for a decision the listener has already made. The method holds that attention lasts about 20 minutes, so no pitch runs longer.
 
 ## The frame primer
 
@@ -21,7 +21,7 @@ A frame is the mental structure a person brings to an encounter. When two meet, 
 | :--- | :--- | :--- |
 | Power frame | Arrogance, making you wait, checking the phone, changing the agenda | Small denial or defiance with humour ("I only have 15 minutes." "That's okay, I only have 12."), then move the meeting in your direction |
 | Time frame | Attention fading, "let's wrap up" | End it first, on your clock. Never speed up to cram more in |
-| Analyst frame | Line-by-line numbers, spreadsheet demands | One high-level figure, "you can verify later", then the intrigue story. Hot and cold cognition cannot run at the same time |
+| Analyst frame | Line-by-line numbers, spreadsheet demands | One high-level figure, "you can verify later", then the intrigue story. In Klaff's terms, hot and cold cognition do not run at the same time |
 
 The prize frame counters all three: you are the prize, money is a commodity available in a thousand places, and the other side qualifies to you ("I'm picky about who I work with. Tell me why we'd enjoy working with you").
 

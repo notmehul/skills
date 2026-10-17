@@ -64,7 +64,7 @@ For anything that calls tools, start with 20 to 50 tasks from real cases and man
 - Grade the outcome first: the final environment state, not the agent's claim.
 - Then four checks per tool call: right tool name; right arguments (schema-valid and semantically right); result handled, including error branches; resulting state correct.
 - Trajectory matching: exact order only for a rigid workflow with one correct path; otherwise "required calls present" in any order and "forbidden calls absent".
-- Negative cases: no tool should be called; a confirmation step precedes every write; a tool on the deny list is never called.
+- Negative cases: no tool should be called; a confirmation step precedes every write except those `building-agents` has classed audit-tier (reliable, reversible, still logged); a tool on the deny list is never called.
 - Loop and budget assertions: max steps, max calls per tool, max cost per task, no repeated identical call. Ten lines over the trace will do.
 - Run 3 or more trials per case. Report pass@k and pass^k, and gate on whichever the product needs: pass^k (k=3 as the floor) for anything customer-facing, pass@k only where one good answer is enough. 75% per trial is 42% pass^3.
 - Keep capability evals (low pass rate, drives improvement) apart from regression evals (near 100%, gates releases); promote a capability task once it is stable.

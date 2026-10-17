@@ -29,7 +29,7 @@ claude plugin eval . --model <pinned-id> --judge-model sonnet \
 
 ## Online evals and sampling
 
-- Tier 0, every trace, synchronous, in code: schema valid, forbidden tools absent, a confirmation preceded every write, personal-data scan on outbound text, cost and latency under budget. A failure writes an event row with `severity`.
+- Tier 0, every trace, synchronous, in code: schema valid, forbidden tools absent, a confirmation preceded every write that is not classed audit-tier, personal-data scan on outbound text, cost and latency under budget. A failure writes an event row with `severity`.
 - Tier 1, every trace, asynchronous, cheap: rule-based quality flags (empty answer, refusal, truncation, retry count).
 - Tier 2, sampled, nightly: model judges per failure mode on a stratified sample. Start at 5 to 10% or 200 traces a day, whichever is smaller; stratify by route and tool; always include a random slice so unknown unknowns still show up.
 - Report with confidence intervals and alert on the lower bound, never the point estimate. Every judged failure joins the golden-set candidate queue.

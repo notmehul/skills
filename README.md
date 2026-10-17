@@ -26,7 +26,7 @@ done
 
 Take the ones you want instead of all of them. They are independent folders, except where a skill names another by name in its text. One at a time: `npx skills add notmehul/skills -s <name>` or `gh skill install notmehul/skills` also work and record provenance.
 
-Every description stays at or under about 250 characters with the trigger first, because that is what the harness reads on every turn; the body loads only when the description matches.
+New and edited descriptions stay at or under about 250 characters with the trigger first, because that is what the harness reads on every turn; the body loads only when the description matches. Older descriptions get trimmed as their skills are touched.
 
 ## The skills
 

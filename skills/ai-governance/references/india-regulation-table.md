@@ -18,3 +18,22 @@ Status as of 17 Oct 2026. Re-check the regulator's page before quoting a date or
 | Insurance cross-sell: Responsible Business Conduct Directions; IRDAI Master Circular on Protection of Policyholders (5 Sep 2024); NHB direction to housing finance companies (Mar 2025); Department of Financial Services instruction (Jun 2025) | In force | No compulsory bundling of insurance with a home loan; the customer may buy from any insurer; housing finance companies take separate consent and offer at least two options; 30-day free look; signed benefit illustration; sales incentives de-linked. A loan bot never implies cover is required |
 | Fair Practices Code (banks, NBFCs, housing finance companies); FACE debt-recovery guidelines (29 Aug 2025) | In force; FACE guidelines are the fintech SRO's reading | No discrimination on sex, caste or religion; transparent reasons for rejection on request. Recovery calls 08:00 to 19:00; AI agents identify themselves and disclose automation; all calls recorded and audited |
 | SEBI Intermediaries (Amendment) Regulations 2025 (6 Feb 2025); consultation on responsible AI (20 Jun 2025) | Amendment in force: the regulated entity is "solely responsible" for AI outputs. No final circular from the consultation found as of Oct 2026 (UNVERIFIED) | Relevant only when the product is a security or investment, not a loan |
+
+## Primary sources
+
+Fetched 17 Oct 2026. Start here before quoting a status.
+
+- RBI Digital Lending Directions 2025: https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12848
+- RBI Pre-payment Charges on Loans Directions 2025: https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12878
+- RBI FREE-AI committee report: https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=61018
+- RBI draft Model Risk Management Guidance (24 Jun 2026): https://www.rbi.org.in/SCRIPTs/BS_PressReleaseDisplay.aspx?prid=63006
+- RBI KYC Master Direction: https://www.rbi.org.in/Scripts/BS_ViewMasterDirections.aspx?id=11566
+- RBI Master Circular on Housing Finance (LTV caps): https://www.rbi.org.in/Scripts/BS_ViewMasterCirculars.aspx?Id=12824
+- RBI circular on 1600 and 140 number series (17 Jan 2025): https://www.rbi.org.in/scripts/NotificationUser.aspx?Id=12770
+- RBI NBFC Responsible Business Conduct amendment: https://www.rbi.org.in/scripts/bs_viewcontent.aspx?Id=4873
+- MeitY DPDP Rules 2025: https://www.meity.gov.in/documents/act-and-policies/digital-personal-data-protection-rules-2025-gDOxUjMtQWa
+- MeitY IT Rules amendment on synthetically generated information: https://www.meity.gov.in/static/uploads/2025/10/065b6deb585441b5ccdf8be42502a49c.pdf
+- TRAI TCCCPR amendment (12 Feb 2025): https://www.trai.gov.in/sites/default/files/2025-02/Regulation_12022025.pdf
+- TRAI 1600-series Direction (19 Nov 2025): https://trai.gov.in/sites/default/files/2025-11/PR_No.135of2025.pdf
+- Sahamati Account Aggregator dashboard: https://sahamati.org.in/aa-dashboard/
+- FACE debt-recovery guidelines (29 Aug 2025): https://faceofindia.org/wp-content/uploads/2025/08/FACE-Guidelines-on-debt-recovery_29-Aug-2025_website.pdf

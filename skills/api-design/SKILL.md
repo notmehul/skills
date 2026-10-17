@@ -7,7 +7,7 @@ description: "Design, change, or review an API contract: an HTTP API or an MCP s
 
 An API is a **contract** with consumers you cannot see or update. Every rule below protects that contract or makes it easy to adopt. A good API is boring: a consumer can guess how it works before reading the docs, so reach for the conventional shape (REST, JSON, plain nouns) over a clever one.
 
-An **MCP tool surface** is an API whose consumer is an agent. Tool names, parameter schemas, and result shapes are the contract; agent prompts, configs, and other people's skills depend on them the way scripts depend on endpoints. Each rule says where MCP differs.
+An **MCP tool surface** is an API whose consumer is an agent. Tool names, parameter schemas, and result shapes are the contract; agent prompts, configs, and other people's skills depend on them the way scripts depend on endpoints. Each rule says where MCP differs. When the work is an MCP server itself, also read [`references/mcp-server-2026.md`](references/mcp-server-2026.md): the 2026-07-28 spec made the protocol stateless and deprecated sampling, roots and dynamic client registration.
 
 ## The rules
 

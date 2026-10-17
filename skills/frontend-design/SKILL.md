@@ -1,7 +1,10 @@
 ---
 name: frontend-design
-description: "Reference for frontend work that reads as intentional rather than templated: typography, color, and layout choices that avoid generic AI aesthetics. Reached from `ui-ux`; the bundled `frontend-design` plugin skill covers the same ground for artifacts."
+description: "Reference for frontend work that reads as intentional rather than templated: typography, color and layout choices that avoid generic AI aesthetics. Reached from `ui-ux`. Cross-harness copy of the frontend-design plugin skill Claude Code bundles."
 disable-model-invocation: true
+metadata:
+  opencode/autoinvoke: "false"
+  updated: "2026-10-18"
 ---
 
 This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.

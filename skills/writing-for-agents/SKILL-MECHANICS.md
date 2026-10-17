@@ -20,3 +20,15 @@ The invocation cut of splitting (the sequence cut lives in `SKILL.md`): split of
 ## Router skills
 
 When user-invoked skills multiply past what you can remember, that piled-up cognitive load is cured by a **router skill**: one user-invoked skill that names the others and when to reach for each, so the human has one skill to remember instead of many. It can only hint, never fire them: user-invoked skills have no description, so nothing but the human can reach them.
+
+## Portable skills
+
+This library is read by Claude Code, Codex and OpenCode, so a skill's body uses nothing only one harness understands. The six fields the Agent Skills spec defines are `name`, `description`, `license`, `compatibility`, `metadata` (string to string) and `allowed-tools`. Claude-only keys (`disable-model-invocation`, `argument-hint`, `when_to_use`) are ignored elsewhere; Codex reads `agents/openai.yaml` (`policy.allow_implicit_invocation: false`) and OpenCode reads `metadata: {opencode/autoinvoke: "false"}` for the same intent, so a user-invoked skill sets all three. In the body: paths relative to the skill folder (never `${CLAUDE_SKILL_DIR}` or `/Users/...`), no `$ARGUMENTS`, no `!`-prefixed shell, no MCP tool names, and harness-specific commands under a heading that names the harness with a generic path first. Record `metadata.updated` (ISO date) and `metadata.source` for anything mined from elsewhere.
+
+## The description budget
+
+Codex gives the whole skill listing 2% of the context window (8,000 characters when the window is unknown; `skills.max_context_tokens` raises it to at most 10,000 tokens) and shortens or drops descriptions silently past that, so each description stays at or under 250 characters with the trigger clause first. Claude Code truncates each description at 1,536 characters instead. Either way the description names the branches that should trigger it and never summarises the workflow: an agent that reads a summary follows the summary and skips the body. Test a description with 20 phrasings, half of them near-misses that should not fire.
+
+## Editing a skill
+
+Run the scenario once without the change in a fresh context (a subagent where the harness has one), keep that transcript, then edit. The before-run is the evidence that the edit was needed and the baseline the after-run is judged against.

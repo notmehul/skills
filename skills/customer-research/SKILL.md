@@ -1,6 +1,6 @@
 ---
 name: customer-research
-description: "Find out what customers or users actually think: plan and run interviews or surveys, mine what they say in public (forums, reviews, issues, job posts), or turn transcripts and notes into themes with confidence levels. Use on \"customer research\", \"user interviews\", \"talk to users\", \"what do people think of X\", \"voice of customer\", \"why did they churn\", or before positioning, copy, or a product call that rests on assumptions about users."
+description: "Find out what users actually think: interviews, surveys, mining public sources, or turning transcripts into themes with confidence levels. Use on \"customer research\", \"user interviews\", \"why did they churn\", or before a product call that rests on assumptions about users."
 ---
 
 # Customer research

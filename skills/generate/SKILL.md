@@ -11,7 +11,7 @@ argument-hint: '<natural-language image request>'
 
 # Generate Codex Image
 
-`--full-auto` was removed in Codex CLI 0.147. Headless imagegen writes under `$CODEX_HOME/generated_images/` then copies into the workspace, so the drop-in is `--dangerously-bypass-approvals-and-sandbox` (alias `--yolo`). That is the old `--full-auto` behavior with an honest name. Do not call `codex exec --full-auto`.
+`--full-auto` was removed in Codex CLI 0.147. Headless imagegen writes under `$CODEX_HOME/generated_images/` then copies into the workspace, so the drop-in is `--dangerously-bypass-approvals-and-sandbox` (Codex 0.159 has no shorter alias). That is the old `--full-auto` behavior with an honest name. Do not call `codex exec --full-auto`.
 
 ## Generate
 
@@ -71,7 +71,7 @@ EOF
 
 ## Safer scoped alternative
 
-If the environment is already a trusted workspace and you want a sandbox instead of `--yolo`:
+If the environment is already a trusted workspace and you want a sandbox instead of bypassing approvals:
 
 ```bash
 codex exec \

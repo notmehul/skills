@@ -1,6 +1,6 @@
 ---
 name: grilling
-description: "Interview the user to a settled design, one round at a time. Use to stress-test a plan, decision, or architecture (\"grill me\", \"poke holes in this\"), and equally when an idea is still vague and the requirements are unstated (\"what if we built\", \"how should this work\"). Works a design tree: asks the whole answerable frontier each round with a recommendation per question, finds its own facts, and lands the result as a design before anything gets built."
+description: "Interview the user to a settled design, one round at a time. Use to stress-test a plan, decision or architecture (\"grill me\", \"poke holes in this\"), and when an idea is still vague and the requirements unstated (\"what if we built\", \"how should this work\")."
 ---
 
 Interview the user relentlessly until you reach a shared understanding. Map this as a **design tree**: every decision branches into the decisions that hang off it.

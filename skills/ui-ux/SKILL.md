@@ -51,11 +51,11 @@ This skill is the front door for UI work. Three companions sit behind it, each u
 
 | Reach for | Read | When |
 |---|---|---|
-| `design-principles` | `~/.claude/skills/design-principles/SKILL.md` | A dashboard, admin panel, or internal tool where the job is restraint: spacing scale, type ramp, pixel-level tightness, and committing to one of six named personality directions before any code. |
-| `frontend-design` | `~/.claude/skills/frontend-design/SKILL.md` | The interface should read as intentional rather than templated: distinctive typography, a committed aesthetic direction, motion and composition that are not defaults. |
-| `tufte-viz` | `~/.claude/skills/tufte-viz/SKILL.md` | Anything that displays data. Charts, dashboards, and reports get critiqued against data-ink and lie factor before they get styled. |
+| `design-principles` | the sibling skill folder `design-principles/SKILL.md` | A dashboard, admin panel, or internal tool where the job is restraint: spacing scale, type ramp, pixel-level tightness, and committing to one of six named personality directions before any code. |
+| `frontend-design` | the sibling skill folder `frontend-design/SKILL.md` | The interface should read as intentional rather than templated: distinctive typography, a committed aesthetic direction, motion and composition that are not defaults. |
+| `tufte-viz` | the sibling skill folder `tufte-viz/SKILL.md` | Anything that displays data. Charts, dashboards, and reports get critiqued against data-ink and lie factor before they get styled. |
 
-For the chart build procedure itself (form heuristic, palette validation, mark specs), the bundled `dataviz` skill owns it; `tufte-viz` judges the result.
+For the chart build procedure itself (form heuristic, palette validation, mark specs), Claude Code's bundled `dataviz` skill owns it where available; `tufte-viz` judges the result.
 
 Interaction and accessibility detail has no separate skill: hold WCAG 2.2 AA as the floor in every UI this skill touches (4.5:1 text contrast, 3:1 for UI components, 24x24px touch targets, visible focus, full keyboard reach) rather than treating it as a later pass.
 
@@ -360,7 +360,7 @@ Use this skill when the user requests any of the following:
 | **Improve / optimize** | "Make this faster", "Improve mobile experience" | Step 3 (domain search: ux, react) |
 | **Implement dark mode** | "Add dark mode support" | Step 3 (domain: style "dark mode") |
 | **Add charts / data viz** | "Add an analytics dashboard chart" | Step 3 (domain: chart) |
-| **Stack best practices** | "React performance tips"、"SwiftUI navigation" | Step 4 (stack search) |
+| **Stack best practices** | "React performance tips", "SwiftUI navigation" | Step 4 (stack search) |
 
 Follow this workflow:
 
@@ -370,14 +370,14 @@ Extract key information from user request:
 - **Product type**: Entertainment (social, video, music, gaming), Tool (scanner, editor, converter), Productivity (task manager, notes, calendar), or hybrid
 - **Target audience**: C-end consumer users; consider age group, usage context (commute, leisure, work)
 - **Style keywords**: playful, vibrant, minimal, dark mode, content-first, immersive, etc.
-- **Stack**: React Native (this project's only tech stack)
+- **Stack**: the project's stack, one of the 16 under Available Stacks
 
 ### Step 2: Generate Design System (REQUIRED)
 
-**Always start with `--design-system`** to get comprehensive recommendations with reasoning:
+**Always start with `--design-system`** to get comprehensive recommendations with reasoning. Run every command in this skill from the skill's own folder (`cd` into `ui-ux/` first); the paths are relative to it.
 
 ```bash
-python3 skills/ui-ux/scripts/search.py "<product_type> <industry> <keywords>" --design-system [-p "Project Name"]
+python3 scripts/search.py "<product_type> <industry> <keywords>" --design-system [-p "Project Name"]
 ```
 
 This command:
@@ -388,7 +388,7 @@ This command:
 
 **Example:**
 ```bash
-python3 skills/ui-ux/scripts/search.py "beauty spa wellness service" --design-system -p "Serenity Spa"
+python3 scripts/search.py "beauty spa wellness service" --design-system -p "Serenity Spa"
 ```
 
 ### Step 2b: Persist Design System (Master + Overrides Pattern)
@@ -396,7 +396,7 @@ python3 skills/ui-ux/scripts/search.py "beauty spa wellness service" --design-sy
 To save the design system for **hierarchical retrieval across sessions**, add `--persist`:
 
 ```bash
-python3 skills/ui-ux/scripts/search.py "<query>" --design-system --persist -p "Project Name"
+python3 scripts/search.py "<query>" --design-system --persist -p "Project Name"
 ```
 
 This creates:
@@ -405,7 +405,7 @@ This creates:
 
 **With page-specific override:**
 ```bash
-python3 skills/ui-ux/scripts/search.py "<query>" --design-system --persist -p "Project Name" --page "dashboard"
+python3 scripts/search.py "<query>" --design-system --persist -p "Project Name" --page "dashboard"
 ```
 
 This also creates:
@@ -430,7 +430,7 @@ Now, generate the code...
 After getting the design system, use domain searches to get additional details:
 
 ```bash
-python3 skills/ui-ux/scripts/search.py "<keyword>" --domain <domain> [-n <max_results>]
+python3 scripts/search.py "<keyword>" --domain <domain> [-n <max_results>]
 ```
 
 **When to use detailed searches:**
@@ -450,12 +450,12 @@ python3 skills/ui-ux/scripts/search.py "<keyword>" --domain <domain> [-n <max_re
 | App interface a11y | `web` | `--domain web "accessibilityLabel touch safe-areas"` |
 | AI prompt / CSS keywords | `prompt` | `--domain prompt "minimalism"` |
 
-### Step 4: Stack Guidelines (React Native)
+### Step 4: Stack Guidelines
 
-Get React Native implementation-specific best practices:
+Get implementation-specific best practices for the project's stack:
 
 ```bash
-python3 skills/ui-ux/scripts/search.py "<keyword>" --stack react-native
+python3 scripts/search.py "<keyword>" --stack <stack>
 ```
 
 ---
@@ -480,9 +480,7 @@ python3 skills/ui-ux/scripts/search.py "<keyword>" --stack react-native
 
 ### Available Stacks
 
-| Stack | Focus |
-|-------|-------|
-| `react-native` | Components, Navigation, Lists |
+`react`, `nextjs`, `vue`, `svelte`, `astro`, `swiftui`, `react-native`, `flutter`, `nuxtjs`, `nuxt-ui`, `html-tailwind`, `shadcn`, `jetpack-compose`, `threejs`, `angular`, `laravel` (the `stacks/` folder has one CSV per entry).
 
 ---
 
@@ -499,7 +497,7 @@ python3 skills/ui-ux/scripts/search.py "<keyword>" --stack react-native
 ### Step 2: Generate Design System (REQUIRED)
 
 ```bash
-python3 skills/ui-ux/scripts/search.py "AI search tool modern minimal" --design-system -p "AI Search"
+python3 scripts/search.py "AI search tool modern minimal" --design-system -p "AI Search"
 ```
 
 **Output:** Complete design system with pattern, style, colors, typography, effects, and anti-patterns.
@@ -508,16 +506,16 @@ python3 skills/ui-ux/scripts/search.py "AI search tool modern minimal" --design-
 
 ```bash
 # Get style options for a modern tool product
-python3 skills/ui-ux/scripts/search.py "minimalism dark mode" --domain style
+python3 scripts/search.py "minimalism dark mode" --domain style
 
 # Get UX best practices for search interaction and loading
-python3 skills/ui-ux/scripts/search.py "search loading animation" --domain ux
+python3 scripts/search.py "search loading animation" --domain ux
 ```
 
 ### Step 4: Stack Guidelines
 
 ```bash
-python3 skills/ui-ux/scripts/search.py "list performance navigation" --stack react-native
+python3 scripts/search.py "list performance navigation" --stack react-native
 ```
 
 **Then:** Synthesize design system + detailed searches and implement the design.
@@ -530,10 +528,10 @@ The `--design-system` flag supports two output formats:
 
 ```bash
 # ASCII box (default) - best for terminal display
-python3 skills/ui-ux/scripts/search.py "fintech crypto" --design-system
+python3 scripts/search.py "fintech crypto" --design-system
 
 # Markdown - best for documentation
-python3 skills/ui-ux/scripts/search.py "fintech crypto" --design-system -f markdown
+python3 scripts/search.py "fintech crypto" --design-system -f markdown
 ```
 
 ---
@@ -545,7 +543,7 @@ python3 skills/ui-ux/scripts/search.py "fintech crypto" --design-system -f markd
 - Use **multi-dimensional keywords** — combine product + industry + tone + density: `"entertainment social vibrant content-dense"` not just `"app"`
 - Try different keywords for the same need: `"playful neon"` → `"vibrant dark"` → `"content-first minimal"`
 - Use `--design-system` first for full recommendations, then `--domain` to deep-dive any dimension you're unsure about
-- Always add `--stack react-native` for implementation-specific guidance
+- Add `--stack <stack>` for implementation-specific guidance
 
 ### Common Sticking Points
 

@@ -1,6 +1,8 @@
 ---
 name: interrogate
-description: "Use for \"interrogate\", \"adversarial review\", \"multi-model review\", \"challenge this\", \"stress test this code\", \"find blind spots\", or \"tear this apart\". Multiple LLM reviewers challenge changes from independent angles."
+description: "Adversarial multi-model review of a diff or code change. Use on \"interrogate\", \"adversarial review\", \"multi-model review\", \"stress test this code\", \"find blind spots\", or \"tear this apart\". A plan or design goes to grilling instead."
+metadata:
+  updated: "2026-10-18"
 ---
 
 # Interrogate
@@ -32,9 +34,11 @@ Write one clear paragraph. Reviewers challenge whether the work achieves the int
 
 ## Step 3, Spawn Reviewers
 
-Launch every reviewer in a single message using the Agent tool, so they run concurrently.
+The adversarial signal comes from model diversity, so spend it where it is real. One reviewer should cross the model family, because that is the only reviewer that can catch a blind spot one family shares.
 
-The adversarial signal comes from model diversity, so spend it where it is real. Reviewer D crosses the model family, which is the only reviewer that can catch a blind spot the Claude family shares.
+Reviewers read and report; they never edit. State that in each prompt: the deliverable is findings, not a patch.
+
+**In Claude Code**, launch every reviewer in a single message with the Agent tool so they run concurrently:
 
 | Reviewer | `subagent_type` | `model` |
 |---|---|---|
@@ -43,11 +47,9 @@ The adversarial signal comes from model diversity, so spend it where it is real.
 | Reviewer C | `general-purpose` | `sonnet` |
 | Reviewer D | `codex:codex-rescue` | (omit, the plugin picks) |
 
-Drop Reviewer D when the codex plugin is unavailable, and say in the verdict that the review ran single-family. Three same-family reviewers agreeing is weaker evidence than two families agreeing.
+Drop Reviewer D when the codex plugin is unavailable, and say in the verdict that the review ran single-family. Three same-family reviewers agreeing is weaker evidence than two families agreeing. If a `model` value is rejected, check the valid values in the tool's error and pick the closest tier of the same family. Do not block the review on it.
 
-Reviewers read and report; they never edit. State that in each prompt: the deliverable is findings, not a patch.
-
-If a `model` value is rejected, check the valid values in the tool's error and pick the closest tier of the same family. Do not block the review on it.
+**In Codex or OpenCode**, run the same filled template through each reviewer the harness can reach: a subagent per reviewer where subagents exist, otherwise one reviewer pass on the current model plus one pass on a different family through its CLI (`claude -p`, `codex exec` or `opencode run`). State in the verdict how many reviewers and families actually ran.
 
 Read `references/reviewer-prompt.md` and fill in the template with:
 1. The stated intent

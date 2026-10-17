@@ -2,6 +2,9 @@
 name: create-verification-skill
 description: "Generate a project-local verification skill that drives your app the way a user does — any language, framework, or platform. Use for /create-verification-skill, \"make a control skill for this repo\", or when a project has no scripted way to prove UI/CLI/service behavior."
 disable-model-invocation: true
+metadata:
+  opencode/autoinvoke: "false"
+  updated: "2026-10-18"
 ---
 
 # Create a verification skill
@@ -41,4 +44,4 @@ Run its own instructions end to end once: launch, doctor, drive ONE mapped featu
 
 ## 5. Offer the maintenance loop
 
-Point the user at `/maintain-verification-skill` for keeping the map honest as the app changes. Suggest a cadence only if they ask.
+Tell the user how to keep the map honest as the app changes: when a route, command or menu is added or removed, add or retire its feature file and re-run that one feature end to end, the way step 4 did. Suggest a cadence only if they ask.

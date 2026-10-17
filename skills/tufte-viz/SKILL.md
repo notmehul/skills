@@ -1,6 +1,6 @@
 ---
 name: tufte-viz
-description: "Critique or redesign a chart, dashboard, or report against Tufte's principles: lie factor, data-ink ratio, chartjunk, small multiples, data density. Use when a visualisation reads as noisy or misleading, or when choosing between chart approaches. The bundled `dataviz` skill owns the build procedure and palette validation."
+description: "Critique or redesign a chart, dashboard, or report against Tufte's principles: lie factor, data-ink ratio, chartjunk, small multiples, data density. Use when a visualisation reads as noisy or misleading, or when choosing between chart approaches. In Claude Code the bundled `dataviz` skill owns the build procedure and palette validation."
 ---
 
 # Tufte Visualization Ideation

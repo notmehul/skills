@@ -2,6 +2,9 @@
 name: design-principles
 description: "Reference for a precise, minimal design system: spacing scale, type ramp, restraint rules, the pixel-level decisions a dashboard or admin UI needs. Reached from `ui-ux` when the work needs tightness rather than a style direction."
 disable-model-invocation: true
+metadata:
+  opencode/autoinvoke: "false"
+  updated: "2026-10-18"
 ---
 
 # Design Principles

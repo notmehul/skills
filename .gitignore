@@ -1,6 +1,5 @@
 # Third-party skills are CLI/app-managed and reproducible, so they are not tracked here.
 # Reinstall them with the commands in README.md (see "Installed from elsewhere").
-skills/ui-ux-pro-max/
 skills/find-skills/
 skills/anatomy/
 # cua-driver is a symlink into /Applications/CuaDriver.app (machine-specific)
@@ -16,6 +15,7 @@ skills-backup-descriptions/
 skills-retired-*/
 .DS_Store
 
-# Python bytecode
+# Python bytecode and the venv mia's setup.sh creates at the repo root
 __pycache__/
 *.pyc
+.venv/

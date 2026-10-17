@@ -347,3 +347,7 @@ For complex maps with animated routes or flyovers, load the maps rule: [rules/ma
 ## Voiceover
 
 See [rules/voiceover.md](rules/voiceover.md) for adding AI-generated voiceover to Remotion compositions using ElevenLabs TTS.
+
+---
+
+Forked from [remotion-dev/skills](https://github.com/remotion-dev/skills) (upstream licence applies), vendored into this library in Sep 2026. Local changes: the beat sheet before any code and the hook test for the first seconds. Re-sync from upstream and re-apply those two rather than editing the body here.

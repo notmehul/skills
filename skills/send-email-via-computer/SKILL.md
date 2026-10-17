@@ -9,7 +9,7 @@ Send mail only through signed-in Chrome Gmail on this computer. Never use the Gm
 
 ## Inputs
 
-- `{from_account}` — which Gmail account (e.g. probablymehul@gmail.com)
+- `{from_account}` — which Gmail account (the personal or the work address)
 - `{to}` — recipient(s)
 - `{subject}`
 - `{body}` — final wording already approved if this is outreach

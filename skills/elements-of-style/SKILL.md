@@ -1,6 +1,6 @@
 ---
 name: elements-of-style
-description: Rewrites prose for clarity and vigor using Strunk & White's Elements of Style. Invoke this skill whenever the user shares a draft, paragraph, email, essay, README, cover letter, blog post, report, or any prose and wants it reviewed, edited, improved, tightened, cleaned up, or rewritten. Also use when they say writing feels wordy, awkward, unclear, weak, flabby, clunky, stilted, overwritten, or corporate — or when they paste text and ask to "make it better." If a user shares prose and wants feedback or a cleaner version, this skill applies.
+description: "Rewrite prose for clarity and vigor with Strunk and White. Use when the user shares a draft (email, essay, README, report, cover letter) and wants it reviewed, tightened or rewritten, or says the writing feels wordy, flabby, stilted or corporate."
 ---
 
 # Elements of Style — Writing Reviewer & Rewriter

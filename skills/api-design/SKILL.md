@@ -28,11 +28,17 @@ Before writing an endpoint or tool, write down its contract: the resource it act
 
 For a diff, a spec, or a tool schema:
 
-1. Diff the contract, not the code. List every added, removed, renamed, retyped, or moved field, param, endpoint, and tool. Read the old shape from `git show <base>:<path>` or the previous spec.
-2. Check every contract change against rule 1, and every new or changed endpoint or tool against rules 2 through 8.
+1. Diff the contract, not the code. The contract is both sides of every endpoint and tool: what it accepts and what it returns, including how much it returns. List every added, removed, renamed, retyped, or moved field, param, endpoint, and tool, and every change in what a result contains, how it is shaped, or how much of it comes back. Read the old shape from `git show <base>:<path>` or the previous spec.
+2. Check every contract change against rule 1. Then check every endpoint and tool, changed or not, against each of rules 2 through 8.
 3. For a break, run `blast-radius` to find who depends on the old shape.
 
-Report each finding with severity first: **critical** for a break in a public contract or a write that is unsafe to retry, **important** for a missing rate limit, offset pagination on a growing list, or an expensive field on by default, **minor** for the rest. Each finding names the rule, the `file:line`, the consumer it hurts, and the fix. Done when every contract change from step 1 has a finding or is listed as cleared.
+Rank each finding by its consequence for consumers:
+
+- **Critical:** a break in a public contract, or a retry that duplicates or corrupts trusted state (a payment, an audit trail, a record other systems read).
+- **Important:** a retry that only duplicates untrusted or reviewable state, a missing rate limit, a growing list with no cursor, or an expensive field on by default.
+- **Minor:** the rest.
+
+Each finding names the rule, the `file:line`, the consumer it hurts, and the fix. Done when every contract change from step 1 has a finding or is listed as cleared, and every endpoint and tool has been checked against every rule.
 
 ---
 

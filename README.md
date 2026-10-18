@@ -141,6 +141,7 @@ These are managed by the [`skills` CLI](https://github.com/vercel-labs/skills) o
 npx skills add vercel-labs/skills -a claude-code                     # find-skills
 npx skills add wheresryan22/anatomy -g -a claude-code -a codex -a cursor -a opencode   # anatomy: interactive isometric SVG figures (MIT)
 # cua-driver: provided by CuaDriver.app (symlink into /Applications)
+# sanity-best-practices, sanity-migration: Sanity's own skills, installed 29 Sep 2026 with the Sanity MCP; kept here so Claude Code's symlink is the only other copy
 ```
 
 ## Provenance and licence

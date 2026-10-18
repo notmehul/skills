@@ -22,3 +22,7 @@ __pycache__/
 
 # Research briefs behind the Oct 2026 upgrade: local only, they name people and companies
 research-2026-10/
+
+# Sanity skills, installed 29 Sep 2026 alongside the Sanity MCP; third-party and reproducible
+skills/sanity-best-practices/
+skills/sanity-migration/

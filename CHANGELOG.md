@@ -27,6 +27,7 @@ Removals and merges are named here so nothing disappears silently. Format follow
 - `README.md`: install paths, the Codex budget, the OpenCode double-discovery note, the `/skills` menu step for hiding synced twins, the `ui-ux-pro-max` ghost removed.
 - `.gitignore`: `.venv/`.
 - `.skill-lock.json`: the `ui-ux-pro-max` entry pointed at a folder that no longer exists; removed. Local scratch (`.venv`, `skills-backup-descriptions`, `skills-retired-2026-08-19`) moved to the Trash; none of it was tracked.
+- `~/.claude/skills` cleaned: `.DS_Store` and a stale `.trash` copy of google-workspace to the Trash; the two Sanity skills that lived there as real folders moved under `skills/` (gitignored, third-party) with symlinks back, so every entry in `~/.claude/skills` is now a symlink into this repo, the app bundle, or claude.ai's `synced/`.
 
 ### Removed
 

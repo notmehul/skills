@@ -1,6 +1,6 @@
 ---
 name: frontend-design
-description: "Reference for frontend work that reads as designed rather than templated: an idea from the subject, type set large with few sizes, one accent, real pictures, one signature move. Reached from `ui-ux` when the brief wants a bold direction. Forked from Anthropic's plugin skill."
+description: "Reference for frontend work that reads as designed rather than templated: an idea from the subject, type set large with few sizes, one accent, real pictures, one signature move. Reached from `ui-ux` when the brief wants a bold direction."
 disable-model-invocation: true
 metadata:
   opencode/autoinvoke: "false"

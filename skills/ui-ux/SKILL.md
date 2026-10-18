@@ -54,10 +54,20 @@ This skill is the front door for UI work. Three companions sit behind it, each u
 | `design-principles` | the sibling skill folder `design-principles/SKILL.md` | A dashboard, admin panel, or internal tool where the job is restraint: spacing scale, type ramp, pixel-level tightness, and committing to one of six named personality directions before any code. |
 | `frontend-design` | the sibling skill folder `frontend-design/SKILL.md` | The interface should read as intentional rather than templated: distinctive typography, a committed aesthetic direction, motion and composition that are not defaults. |
 | `tufte-viz` | the sibling skill folder `tufte-viz/SKILL.md` | Anything that displays data. Charts, dashboards, and reports get critiqued against data-ink and lie factor before they get styled. |
+| `design-taste-frontend` | the installed skill (CLI-managed, `~/.agents/skills/design-taste-frontend`) | A landing page, marketing site, portfolio, product page or hero, built from scratch: it deals a researched direction, finds real pictures, and measures the render in a real browser. Not for dashboards or app screens. |
+| public pages, the rules | [`references/public-page.md`](references/public-page.md) | The same work when you build one section, review someone else's page, or cannot run the scripts: the idea before the style, the two-line headline arithmetic, type and colour numbers from the study, picture provenance and credits, the motion layer, the verify step and the dated tells. |
+| polish | [`references/polish.md`](references/polish.md) | A component or app UI that "feels off", a polish pass, or a review of states and motion: concentric radii, optical alignment, shadow-as-border tokens, hit areas, icon stroke weights, interruptible transitions, the review output format. |
+| redesign, or a brief that is an image | [`references/redesign.md`](references/redesign.md) | Improving what exists without breaking it: preserve or overhaul, audit first, the fix order, what never changes silently; and extraction before coding when the brief is a screenshot or a design export. |
 
 For the chart build procedure itself (form heuristic, palette validation, mark specs), Claude Code's bundled `dataviz` skill owns it where available; `tufte-viz` judges the result.
 
-Interaction and accessibility detail has no separate skill: hold WCAG 2.2 AA as the floor in every UI this skill touches (4.5:1 text contrast, 3:1 for UI components, 24x24px touch targets, visible focus, full keyboard reach) rather than treating it as a later pass.
+Interaction and accessibility detail has no separate skill: hold WCAG 2.2 AA as the floor in every UI this skill touches (4.5:1 text contrast, 3:1 for UI components, visible focus, full keyboard reach, 13px as the smallest text meant to be read) rather than treating it as a later pass. Touch targets are 44x44px on touch surfaces and at least 40x40px in dense desktop UI; WCAG's 24x24px is the legal floor, not the target.
+
+When the brief names a design system (Material, Fluent, Carbon, Polaris, Atlassian, Primer, GOV.UK, USWDS, Bootstrap, Radix, shadcn, Tailwind), use the official package and its tokens. When it names an aesthetic (glass, bento, brutalism, editorial, aurora), build it with web standards and say so; Apple's Liquid Glass is an approximation in CSS, not a package.
+
+## Verify before done
+
+A UI is not done because it compiles. For anything rendered in a browser, run the installed inspector from this skill's sibling: `node ~/.agents/skills/design-taste-frontend/scripts/lint.mjs <files>` and `node ~/.agents/skills/design-taste-frontend/scripts/inspect.mjs <url or index.html>`. It renders at 1440, 768 and 390, measures contrast, overflow, covered and clipped text, headline line counts, type sizes and loaded fonts, and saves screenshots. Its defaults encode one studio's house style for marketing pages, so for product UI pass `--allow mono,hairline,outlined-box,shadow,numbering,eyebrow,micro-label,icon-cards,card-rows,pill-nav,glass,few-pictures,no-real-pictures,no-footage,still-page,first-action` and read what remains: those are breakage, not taste. Then open the screenshots and critique them (`references/public-page.md` §8 for a page, `references/polish.md` for an app), fix the top three problems, and run it again, at most three rounds. When the inspector cannot run (no Node 22 or no Chromium), take screenshots with whatever browser tool you have, critique those, and say in the hand-back that the inspector did not run.
 
 ## Rule Categories by Priority
 
@@ -141,7 +151,7 @@ Interaction and accessibility detail has no separate skill: hold WCAG 2.2 AA as 
 
 - `style-match` - Match style to product type (use `--design-system` for recommendations)
 - `consistency` - Use same style across all pages
-- `no-emoji-icons` - Use SVG icons (Heroicons, Lucide), not emojis
+- `no-emoji-icons` - Use SVG icons from one set drawn with `currentColor`, not emojis; which set is the project's call, and the stroke matches the text beside it (`references/polish.md`)
 - `color-palette-from-product` - Choose palette from product/industry (search `--domain color`)
 - `effects-match-style` - Shadows, blur, radius aligned with chosen style (glass / flat / clay etc.)
 - `platform-adaptive` - Respect platform idioms (iOS HIG vs Material): navigation, controls, typography, motion
@@ -163,7 +173,7 @@ Interaction and accessibility detail has no separate skill: hold WCAG 2.2 AA as 
 - `horizontal-scroll` - No horizontal scroll on mobile; ensure content fits viewport width
 - `spacing-scale` - Use 4pt/8dp incremental spacing system (Material Design)
 - `touch-density` - Keep component spacing comfortable for touch: not cramped, not causing mis-taps
-- `container-width` - Consistent max-width on desktop (max-w-6xl / 7xl)
+- `container-width` - App shells: a consistent max-width on desktop (max-w-6xl / 7xl). A public page runs type, images and colour fields to the edges and constrains only the text measure, in `ch` on the paragraph (`references/public-page.md` §5)
 - `z-index-management` - Define layered z-index scale (e.g. 0 / 10 / 20 / 40 / 100 / 1000)
 - `fixed-element-offset` - Fixed navbar/bottom bar must reserve safe padding for underlying content
 - `scroll-behavior` - Avoid nested scroll regions that interfere with the main scroll experience
@@ -187,7 +197,8 @@ Interaction and accessibility detail has no separate skill: hold WCAG 2.2 AA as 
 - `color-not-decorative-only` - Functional color (error red, success green) must include icon/text; avoid color-only meaning (HIG, MD)
 - `truncation-strategy` - Prefer wrapping over truncation; when truncating use ellipsis and provide full text via tooltip/expand (Apple HIG)
 - `letter-spacing` - Respect default letter-spacing per platform; avoid tight tracking on body text (HIG, MD)
-- `number-tabular` - Use tabular/monospaced figures for data columns, prices, and timers to prevent layout shift
+- `number-tabular` - `font-variant-numeric: tabular-nums` in the text face for data columns, prices, timers and any number that changes; monospace is for code, IDs and hashes, not for numbers
+- `text-floor` - 13px is the smallest size for anything meant to be read; body 16px or more; secondary text is the same face in a softer ink, not a smaller or lighter one
 - `whitespace-balance` - Use whitespace intentionally to group related items and separate sections; avoid visual clutter (Apple HIG)
 
 ### 7. Animation (MEDIUM)
@@ -195,20 +206,20 @@ Interaction and accessibility detail has no separate skill: hold WCAG 2.2 AA as 
 - `duration-timing` - Use 150–300ms for micro-interactions; complex transitions ≤400ms; avoid >500ms (MD)
 - `transform-performance` - Use transform/opacity only; avoid animating width/height/top/left
 - `loading-states` - Show skeleton or progress indicator when loading exceeds 300ms
-- `excessive-motion` - Animate 1-2 key elements per view max
-- `easing` - Use ease-out for entering, ease-in for exiting; avoid linear for UI transitions
+- `excessive-motion` - Product UI: animate 1-2 key elements per view, and nothing custom on high-frequency interactions (instant, or a colour/opacity transition at 150ms or less). A public page gets one signature move, an entrance per section, feedback on every control and one moving picture (`references/public-page.md` §7)
+- `easing` - Ease-out for entering and for exiting (the exit shorter); ease-in-out for things that travel while visible; linear only for constant travel such as a marquee or progress. Never ease-in: its first frames barely move and the interface feels slow
 - `motion-meaning` - Every animation must express a cause-effect relationship, not just be decorative (Apple HIG)
 - `state-transition` - State changes (hover / active / expanded / collapsed / modal) should animate smoothly, not snap
 - `continuity` - Page/screen transitions should maintain spatial continuity (shared element, directional slide) (Apple HIG)
 - `parallax-subtle` - Use parallax sparingly; must respect reduced-motion and not cause disorientation (Apple HIG)
-- `spring-physics` - Prefer spring/physics-based curves over linear or cubic-bezier for natural feel (Apple HIG fluid animations)
+- `spring-physics` - Native apps: spring curves for gestures and sheets (Apple HIG). Web: ease-out tokens (`cubic-bezier(0.22, 1, 0.36, 1)` or the project's own); a spring only with bounce 0, so nothing overshoots; bounce and elastic easing are a tell
 - `exit-faster-than-enter` - Exit animations shorter than enter (~60–70% of enter duration) to feel responsive (MD motion)
-- `stagger-sequence` - Stagger list/grid item entrance by 30–50ms per item; avoid all-at-once or too-slow reveals (MD)
+- `stagger-sequence` - List or grid items 30–50ms apart (MD); the semantic groups of a staged entrance (title, text, action) 60–100ms apart, and only for an infrequent entrance, never for routine interactions
 - `shared-element-transition` - Use shared element / hero transitions for visual continuity between screens (MD, HIG)
 - `interruptible` - Animations must be interruptible; user tap/gesture cancels in-progress animation immediately (Apple HIG)
 - `no-blocking-animation` - Never block user input during an animation; UI must stay interactive (Apple HIG)
 - `fade-crossfade` - Use crossfade for content replacement within the same container (MD)
-- `scale-feedback` - Subtle scale (0.95–1.05) on press for tappable cards/buttons; restore on release (HIG, MD)
+- `scale-feedback` - `scale(0.96)` on press for tappable cards and buttons, as an interruptible transition of about 150ms; never below 0.95, which reads as exaggerated; restore on release (HIG, MD)
 - `gesture-feedback` - Drag, swipe, and pinch must provide real-time visual response tracking the finger (MD Motion)
 - `hierarchy-motion` - Use translate/scale direction to express hierarchy: enter from below = deeper, exit upward = back (MD)
 - `motion-consistency` - Unify duration/easing tokens globally; all animations share the same rhythm and feel
@@ -361,6 +372,10 @@ Use this skill when the user requests any of the following:
 | **Implement dark mode** | "Add dark mode support" | Step 3 (domain: style "dark mode") |
 | **Add charts / data viz** | "Add an analytics dashboard chart" | Step 3 (domain: chart) |
 | **Stack best practices** | "React performance tips", "SwiftUI navigation" | Step 4 (stack search) |
+| **Public page from scratch** | "Build a landing page for…", "a portfolio", "a product page", "a hero" | `design-taste-frontend` (installed); the rules in `references/public-page.md` |
+| **Polish / "feels off"** | "Make it feel better", "the hover feels wrong", "review the details" | `references/polish.md`, then Verify |
+| **Redesign what exists** | "Make this look premium", "it looks AI-made", "upgrade the UI" | `references/redesign.md`, then the page or polish path |
+| **Brief is an image** | A screenshot, a Figma export, a generated comp | `references/redesign.md` (extraction before coding) |
 
 Follow this workflow:
 
@@ -675,6 +690,12 @@ Scope notice: This checklist is for App UI (iOS/Android/React Native/Flutter).
 - [ ] `curl -sL <url>` shows the headline, the what-it-is line, and the primary CTA in the raw HTML (agents and AI crawlers mostly don't run JavaScript; `-L` follows the apex-to-www redirect most hosts add)
 - [ ] `curl -sIL -A ClaudeBot <url>` ends on a 200, not a CDN bot challenge
 - [ ] Shared links preview: `curl -sL <url> | grep -E 'og:|twitter:'` shows `og:image` (1200x630) and `twitter:card` set to `summary_large_image`; a public repo also gets a GitHub social preview (1280x640)
+- [ ] Focal point: on the desktop first screen the largest type is 4.5vw or more, or one picture holds 30% or more of the viewport; a real button for the primary action sits in that screen
+- [ ] Every headline fits two lines or fewer at 390, 768 and 1440 (about 32 characters for the hero); a statement set large is a `<p>` at 36px or less on desktop
+- [ ] Body 16px or more, nothing readable under 13px, body contrast 4.5:1 and no soft-grey running text
+- [ ] No text covered by another element at any scroll position, no sideways overflow at 390, no headline a nav bar sits on
+- [ ] No icon-topped feature-card row, no eyebrow label above every heading, no invented proof (customers, quotes, logos, counts); every found picture credited in the footer and listed in the hand-back
+- [ ] Nothing left at `opacity: 0` when JavaScript fails; reduced motion keeps the content and drops the travel
 
 <!-- marshmallow:alignment:start -->
 ## Marshmallow Alignment

@@ -5,6 +5,7 @@ disable-model-invocation: true
 metadata:
   opencode/autoinvoke: "false"
   updated: "2026-10-18"
+  source: "own rules; polish values after jakubkrehel/make-interfaces-feel-better (MIT) and type and colour priors after Leonxlnx/taste-skill v2 (MIT), both read 18 Oct 2026"
 ---
 
 # Design Principles
@@ -65,12 +66,15 @@ The content should drive the layout:
 
 ### Choose Typography
 
-Typography sets tone. Don't always default:
+Typography sets tone. Choose a class for the product, then a face inside it that is not the current default; every published "use this font instead" list becomes the next tell within months, so this skill names classes, not faces:
 
 - **System fonts** — fast, native, invisible (good for utility-focused products)
-- **Geometric sans** (Geist, Inter) — modern, clean, technical
-- **Humanist sans** (SF Pro, Satoshi) — warmer, more approachable
-- **Monospace influence** — technical, developer-focused, data-heavy
+- **Grotesk, tight or light** — modern, clean, technical; the default class for product UI
+- **Geometric sans** — orderly, constructed, slightly cooler
+- **Humanist sans or rounded** — warmer, more approachable
+- **Monospace as an accent** — code, IDs, hashes and a developer voice; never the running text face
+
+Derive the choice from the product (its users, its voice, its existing brand), load only the weights you use (two or three in total), give a fallback stack of the same kind, and confirm after building that the declared face actually rendered: a fallback makes every visual judgement false.
 
 ---
 
@@ -87,15 +91,18 @@ All spacing uses a 4px base grid:
 - `24px` - generous spacing (between sections)
 - `32px` - major separation
 
-### Symmetrical Padding
-**TLBR must match.** If top padding is 16px, left/bottom/right must also be 16px. Exception: when content naturally creates visual balance.
+### Padding: symmetrical by default, optical by exception
+Start with matching padding on all four sides (16px, or 12px 16px when the horizontal needs room). Then adjust by eye where geometry lies: a button with a trailing icon gets 2px less padding on the icon side; a play triangle shifts about 2px toward its point; a section's bottom padding often needs to be slightly larger than its top to look equal. An optical adjustment is a decision written once in the component, not a different value on every instance.
 
 ```css
-/* Good */
+/* Default */
 padding: 16px;
-padding: 12px 16px; /* Only when horizontal needs more room */
+padding: 12px 16px;
 
-/* Bad */
+/* Optical: icon side = text side - 2px */
+padding: 0 14px 0 16px;
+
+/* Accidental */
 padding: 24px 16px 12px 16px;
 ```
 
@@ -106,7 +113,7 @@ Stick to the 4px grid. Sharper corners feel technical, rounder corners feel frie
 - Soft: 8px, 12px
 - Minimal: 2px, 4px, 6px
 
-Don't mix systems. Consistency creates coherence.
+Don't mix systems. Consistency creates coherence. Inside the system, nested radii are concentric: outer radius = inner radius + the padding between them (a 16px card with 8px padding holds an 8px-radius child). Equal radii on parent and child read as pinched; past about 24px of padding, treat the two as separate surfaces and pick each radius on its own. A mixed system is allowed only under a written rule ("buttons pill, cards 12px, inputs 8px").
 
 ### Depth & Elevation Strategy
 
@@ -118,7 +125,9 @@ Don't mix systems. Consistency creates coherence.
 
 **Layered shadows** — Rich, premium, dimensional. Multiple shadow layers create realistic depth for products that want to feel substantial. Stripe and Mercury use this approach. Best for cards that need to feel like physical objects.
 
-**Surface color shifts** — Background tints establish hierarchy without any shadows. A card at `#fff` on a `#f8fafc` background already feels elevated. Shadows can reinforce this, but color does the heavy lifting.
+**Surface color shifts** — Background tints establish hierarchy without any shadows. A card one tone step (2 to 6 lightness points) from the ground already feels elevated; one step is enough, and a panel inside a panel is a smell. Shadows can reinforce this, but color does the heavy lifting.
+
+**Shadow as border** — For a card, button or container whose border exists only to fake depth, a layered transparent shadow adapts to any background where a solid border does not. Borders that carry structure or state (dividers, table cells, input outlines, focus and selected states) stay borders.
 
 Choose ONE approach and commit. Mixing flat borders on some cards with heavy shadows on others creates visual inconsistency.
 
@@ -137,6 +146,13 @@ border: 0.5px solid var(--border);
   0 1px 2px rgba(0, 0, 0, 0.04),
   0 2px 4px rgba(0, 0, 0, 0.03),
   0 4px 8px rgba(0, 0, 0, 0.02);
+
+/* Shadow-as-border: a 1px ring, a little lift, ambient depth */
+--shadow-border:
+  0 0 0 1px oklch(0 0 0 / 0.06),
+  0 1px 2px -1px oklch(0 0 0 / 0.06),
+  0 2px 4px 0 oklch(0 0 0 / 0.04);
+/* dark mode collapses to one ring: 0 0 0 1px oklch(1 0 0 / 0.08) */
 ```
 
 **The craft is in the choice, not the complexity.** A flat interface with perfect spacing and typography is more polished than a shadow-heavy interface with sloppy details.
@@ -149,32 +165,39 @@ Design each card's internal structure for its specific content — but keep the 
 ### Isolated Controls
 UI controls deserve container treatment. Date pickers, filters, dropdowns — these should feel like crafted objects sitting on the page, not plain text with click handlers.
 
-**Never use native form elements for styled UI.** Native `<select>`, `<input type="date">`, and similar elements render OS-native dropdowns and pickers that cannot be styled. Build custom components instead:
+**Native first.** Native `<select>`, `<input type="date">`, checkboxes and radios bring keyboard handling, screen-reader semantics, mobile pickers and the right on-screen keyboard for free; style their container and their trigger and keep them. Build a custom control only when the design needs something a native one cannot do, and then only with full parity: keyboard operation, focus management, ARIA roles and states, and the same behaviour on touch. A custom control that fails any of those is a regression dressed as polish.
 
-- Custom select: trigger button + positioned dropdown menu
-- Custom date picker: input + calendar popover
-- Custom checkbox/radio: styled div with state management
+- Custom select: trigger button + positioned dropdown menu, `role="listbox"`, arrow keys, typeahead, Escape closes
+- Custom date picker: a real input that accepts typing + a calendar popover
+- Custom checkbox/radio: the native input stays in the DOM (visually hidden), the styled element mirrors its state
 
 **Custom select triggers must use `display: inline-flex` with `white-space: nowrap`** to keep text and chevron icons on the same row. Without this, flex children can wrap to new lines.
 
 ### Typography Hierarchy
-- Headlines: 600 weight, tight letter-spacing (-0.02em)
+- Headlines: 600 weight, tight letter-spacing (-0.02em); size does the hierarchy work before weight does
 - Body: 400-500 weight, standard tracking
-- Labels: 500 weight, slight positive tracking for uppercase
-- Scale: 11px, 12px, 13px, 14px (base), 16px, 18px, 24px, 32px
+- Labels: 500 weight, slight positive tracking for uppercase; tiny tracked uppercase labels scattered around a view are a tell, so keep them to table headers and section labels
+- Scale: 11px, 12px, 13px, 14px (base), 16px, 18px, 24px, 32px. 13px is the floor for anything meant to be read; 11px and 12px are for metadata nobody must read (timestamps in a dense log, axis ticks), never for body or labels
+- `text-wrap: balance` on headings, `pretty` on short paragraphs; `-webkit-font-smoothing: antialiased` once, on the root
 
-### Monospace for Data
-Numbers, IDs, codes, timestamps belong in monospace. Use `tabular-nums` for columnar alignment. Mono signals "this is data."
+### Numbers and Code
+Numbers that change (counters, prices, timers, table columns) are set in the text face with `font-variant-numeric: tabular-nums`, so digits line up and nothing shifts. Monospace is for code, IDs, hashes and tokens: things a person copies, not things they read. A monospace label on a number does not make it data; alignment does.
 
 ### Iconography
-Use **Phosphor Icons** (`@phosphor-icons/react`). Icons clarify, not decorate — if removing an icon loses no meaning, remove it.
+Use **Phosphor Icons** (`@phosphor-icons/react`) as the house set. Icons clarify, not decorate — if removing an icon loses no meaning, remove it.
 
-Give standalone icons presence with subtle background containers.
+- One SVG per icon drawn with `currentColor`; hover, selected and disabled come from CSS colour and opacity, never separate assets. Outline is the default; the filled variant marks the active state.
+- The stroke matches the text beside it: 1.5px next to regular text, 2px next to medium or semibold, 2.5px next to bold or standalone. One stroke weight per surface; never two icon sets on one surface.
+- Test at the smallest render size (usually 16px); use the set's native grid sizes.
+- A standalone icon in a toolbar or an empty state may sit in a subtle container for presence. A row of icon-topped feature cards is a marketing-page tell (1% of top sites, 28% of weak ones in the Oct 2026 study), not a dashboard pattern.
 
 ### Animation
-- 150ms for micro-interactions, 200-250ms for larger transitions
-- Easing: `cubic-bezier(0.25, 1, 0.5, 1)`
-- No spring/bouncy effects in enterprise UI
+- 150ms for micro-interactions, 200-250ms for larger transitions; press feedback `scale(0.96)` over 150ms, never below 0.95
+- Easing: `cubic-bezier(0.25, 1, 0.5, 1)`, ease-out for entering and exiting (the exit shorter); never ease-in
+- CSS transitions for interactive state changes (they retarget mid-flight when the user changes their mind); keyframes only for one-shot sequences
+- No bounce or elastic motion in enterprise UI; a spring with bounce 0 is fine, it is just a good ease-out
+- Nothing custom on high-frequency interactions (row hover, keystrokes): instant, or a colour or opacity transition at 150ms or less. Motion is never the only feedback channel.
+- `references/polish.md` in `ui-ux` carries the rest: concentric radii, optical alignment, image outlines, icon cross-fades, `will-change`, `transition-property`
 
 ### Contrast Hierarchy
 Build a four-level system: foreground (primary) → secondary → muted → faint. Use all four consistently.

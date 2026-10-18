@@ -62,9 +62,9 @@ New and edited descriptions stay at or under about 250 characters with the trigg
 
 | Skill | For |
 | --- | --- |
-| `ui-ux` | Front door for any UI work: style direction, palette, type pairing, stack conventions. |
+| `ui-ux` | Front door for any UI work: style direction, palette, type pairing, stack conventions, and a verify step that renders and measures the page. Its references carry the public-page rules (idea, words, pictures, motion, the dated tells), the polish rules (radii, shadows, hit areas, icons, motion), and the redesign protocol. |
 | `design-principles` | The restrained end: spacing scale, type ramp, dashboards. |
-| `frontend-design` | The bolder end: work that reads as intentional, not templated. |
+| `frontend-design` | The bolder end: work that reads as intentional, not templated. A fork of Anthropic's plugin skill, rewritten against the Oct 2026 study numbers. |
 | `tufte-viz` | Charts, against Tufte's principles. |
 | `generate` | Raster images through Codex CLI's imagegen. |
 | `remotion-best-practices` | Remotion videos in React, with a beat sheet before any code. |
@@ -140,6 +140,7 @@ These are managed by the [`skills` CLI](https://github.com/vercel-labs/skills) o
 ```sh
 npx skills add vercel-labs/skills -a claude-code                     # find-skills
 npx skills add wheresryan22/anatomy -g -a claude-code -a codex -a cursor -a opencode   # anatomy: interactive isometric SVG figures (MIT)
+npx skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend -g -a claude-code -a codex -a opencode   # taste-skill v2: art direction, open-collection pictures and a real-browser inspector for public pages (MIT; needs Node 22+ and a Chromium)
 # cua-driver: provided by CuaDriver.app (symlink into /Applications)
 # sanity-best-practices, sanity-migration: Sanity's own skills, installed 29 Sep 2026 with the Sanity MCP; kept here so Claude Code's symlink is the only other copy
 ```
@@ -156,6 +157,9 @@ The rest came from other people and keep their own terms. Where I changed one, t
 | --- | --- | --- |
 | `elements-of-style`, `pitching` (a merge of their `pitch-builder`, `pitch-review` and `frame-control`) | [alexanderSolod/skill-library](https://github.com/alexanderSolod/skill-library) | MIT |
 | `ui-ux` | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill): their database, with the description rewritten to route into the rest of the design skills and a checklist added for public web pages | MIT |
+| `ui-ux/references/polish.md` | [jakubkrehel/make-interfaces-feel-better](https://github.com/jakubkrehel/make-interfaces-feel-better): their 19 craft rules and review format, distilled with the values kept | MIT |
+| `ui-ux/references/public-page.md`, `redesign.md`, and the type and colour priors in `design-principles` and `frontend-design` | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) v2: the study numbers, the copy, type, colour, layout, imagery and motion rules, the critique passes and the dated tells, distilled; the skill itself is installed separately (see above) for its library and inspector | MIT |
+| `frontend-design` | Anthropic's `frontend-design` plugin skill, forked 18 Oct 2026: the ornament and font paragraphs rewritten against the taste-skill study and make-interfaces-feel-better | as published |
 | `resume-builder` | [dabydat/resume-builder-skill](https://github.com/dabydat/resume-builder-skill), rewritten for harnesses: content guidance only | MIT |
 | `tufte-viz` | gist `aparente/e48c353755958621b3c0004593105a90` | as published |
 | `remotion-best-practices` | [remotion-dev/skills](https://github.com/remotion-dev/skills), forked to add a beat sheet and a hook test | as published |

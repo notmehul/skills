@@ -2,6 +2,7 @@
 # Reinstall them with the commands in README.md (see "Installed from elsewhere").
 skills/find-skills/
 skills/anatomy/
+skills/design-taste-frontend/
 # cua-driver is a symlink into /Applications/CuaDriver.app (machine-specific)
 skills/cua-driver
 
@@ -9,20 +10,16 @@ skills/cua-driver
 # ratings and portfolio internals. They stay on this machine.
 skills/lead-finder/
 skills/warm-path-finder/
-
 # Local scratch
 skills-backup-descriptions/
 skills-retired-*/
 .DS_Store
-
 # Python bytecode and the venv mia's setup.sh creates at the repo root
 __pycache__/
 *.pyc
 .venv/
-
 # Research briefs behind the Oct 2026 upgrade: local only, they name people and companies
 research-2026-10/
-
 # Sanity skills, installed 29 Sep 2026 alongside the Sanity MCP; third-party and reproducible
 skills/sanity-best-practices/
 skills/sanity-migration/

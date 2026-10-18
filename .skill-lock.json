@@ -18,6 +18,15 @@
       "skillFolderHash": "dbf697a527bbf7d358668e1557cb1e35ff725d46",
       "installedAt": "2026-10-11T19:10:18.789Z",
       "updatedAt": "2026-10-11T19:10:18.789Z"
+    },
+    "design-taste-frontend": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/taste-skill/SKILL.md",
+      "skillFolderHash": "d11cb9568d2f27401ce1f48217721e69ee32637f",
+      "installedAt": "2026-10-18T10:14:33.669Z",
+      "updatedAt": "2026-10-18T10:14:33.669Z"
     }
   },
   "dismissed": {
